@@ -17,7 +17,7 @@ namespace BUS
                 string CustomSalt = "";
                 byte[] saltBytes = Encoding.UTF8.GetBytes(CustomSalt);
                 byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-              =   byte[] saltedInput = new byte[saltBytes.Length + inputBytes.Length];
+                byte[] saltedInput = new byte[saltBytes.Length + inputBytes.Length];
 
                 Buffer.BlockCopy(saltBytes, 0, saltedInput, 0, saltBytes.Length);
                 Buffer.BlockCopy(inputBytes, 0, saltedInput, saltBytes.Length, inputBytes.Length);

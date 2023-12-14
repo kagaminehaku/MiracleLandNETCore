@@ -61,24 +61,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MIRACLELANDNETFW.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MIRACLELANDNETFW.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MIRACLELANDNETFW.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MIRACLELANDNETFW.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MIRACLELANDNETFW.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MIRACLELANDNETFW.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TSMG.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TSMG.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSMG.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TSMG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSMG.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TSMG.edmx</DependentUpon>
+    </Compile>
     <Compile Include="user_account.cs">
-      <DependentUpon>MIRACLELANDNETFW.tt</DependentUpon>
+      <DependentUpon>TSMG.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,13 +89,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="MIRACLELANDNETFW.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MIRACLELANDNETFW.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="MIRACLELANDNETFW.edmx.diagram">
-      <DependentUpon>MIRACLELANDNETFW.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,6 +99,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="TSMG.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TSMG.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TSMG.edmx.diagram">
+      <DependentUpon>TSMG.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -114,15 +114,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MIRACLELANDNETFW.Context.tt">
+    <Content Include="TSMG.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MIRACLELANDNETFW.edmx</DependentUpon>
-      <LastGenOutput>MIRACLELANDNETFW.Context.cs</LastGenOutput>
+      <DependentUpon>TSMG.edmx</DependentUpon>
+      <LastGenOutput>TSMG.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MIRACLELANDNETFW.tt">
+    <Content Include="TSMG.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MIRACLELANDNETFW.edmx</DependentUpon>
-      <LastGenOutput>MIRACLELANDNETFW.cs</LastGenOutput>
+      <DependentUpon>TSMG.edmx</DependentUpon>
+      <LastGenOutput>TSMG.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

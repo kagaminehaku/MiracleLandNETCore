@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 
 
 
@@ -12,20 +13,13 @@ namespace DAL
     {
         private static DALuser_account instance;
 
-        public static DALuser_account Instance
+        public List<user_account> GetAllNguoiDung()
         {
-            get
+            using (var dbContext = new TSMGEntities()) // Create a new instance
             {
-                if (instance == null) instance = new DALuser_account();
-                return instance;
+                return dbContext.user_account.AsNoTracking().ToList();
             }
-            set => instance = value;
         }
-
-        //public List<user_account> GetAllNguoiDung()
-        //{
-        //    //return MIRACLELANDNETFWEntities1.Instance.user_account.AsNoTracking().ToList();
-        //}
 
         //public NGUOIDUNG GetNguoiDungById(int id)
         //{

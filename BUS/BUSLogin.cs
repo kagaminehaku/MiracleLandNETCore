@@ -1,35 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using DAL;
+using DTO;
 
 namespace BUS
 {
     public class BUSLogin
     {
-        private static BUSLogin instance;
-        public static BUSLogin Instance
+        public int checkValidLogin(string usrname, string usrpwd)
         {
-            get
+            DALuser_account dalUserAccount = new DALuser_account(); // Create a new instance directly
+            List<user_account> found = dalUserAccount.GetAllNguoiDung();
+
+            foreach (var user in found)
             {
-                if (instance == null) instance = new BUSLogin();
-                return instance;
+                if (user.username == usrname && user.password == usrpwd)
+                {
+                    return user.id;
+                }
             }
-            set => instance = value;
+
+            return -1;
         }
-        //public int checkValidLogin(string usrname, string usrpwd)
-        //{
-        //    List<user_account> found = DALuser_account.Instance.GetAllNguoiDung();
-        //    foreach (var user in found)
-        //    {
-        //        if (user.username == usrname)
-        //            if (user.password == usrpwd)
-        //            {
-        //                return user.id;
-        //            }
-        //    }
-        //    return -1;
-        //}
+
     }
 }

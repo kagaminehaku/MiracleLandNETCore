@@ -60,6 +60,7 @@
             this.login_password.Name = "login_password";
             this.login_password.Size = new System.Drawing.Size(294, 20);
             this.login_password.TabIndex = 3;
+            this.login_password.UseSystemPasswordChar = true;
             // 
             // label1
             // 

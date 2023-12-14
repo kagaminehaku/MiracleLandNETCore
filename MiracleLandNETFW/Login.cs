@@ -1,4 +1,5 @@
 ﻿using BUS;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,9 +24,8 @@ namespace MiracleLandNETFW
         {
             string username = login_username.Text;
             string userpwd = login_password.Text;
-            ////BUSLogin bLogin = new BUSLogin();
-            ////int id = bLogin.checkValidLogin(username, userpwd);
-            int id = 0;
+            BUSLogin bLogin = new BUSLogin();
+            int id = bLogin.checkValidLogin(username, userpwd);
             if (id != -1)
             {
                 MessageBox.Show("Đăng nhập thành công!\nChào mừng " + username + "!",

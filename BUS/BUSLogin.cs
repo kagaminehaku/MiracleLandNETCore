@@ -18,18 +18,18 @@ namespace BUS
             }
             set => instance = value;
         }
-        public int checkValidLogin(string usrname, string usrpwd)
-        { 
-            //List<NGUOIDUNG> found = DALNguoiDung.Instance.GetAllNguoiDung();
-            //foreach (var user in found)
-            //{
-            //    if (user.TenDangNhap == usrname)
-            //        if (user.MatKhau == usrpwd)
-            //        {
-            //            return user.id;
-            //        }
-            //}
-            return -1;
-        }
+        //public int checkValidLogin(string usrname, string usrpwd)
+        //{
+        //    List<user_account> found = DALuser_account.Instance.GetAllNguoiDung();
+        //    foreach (var user in found)
+        //    {
+        //        if (user.username == usrname)
+        //            if (user.password == usrpwd)
+        //            {
+        //                return user.id;
+        //            }
+        //    }
+        //    return -1;
+        //}
     }
 }

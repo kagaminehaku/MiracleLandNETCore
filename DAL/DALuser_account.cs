@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
+
+
 
 namespace DAL
 {
@@ -21,10 +22,10 @@ namespace DAL
             set => instance = value;
         }
 
-        public List<user_account> GetAllNguoiDung()
-        {
-            return MIRACLELANDNETFWEntities1.Instance.user_account.AsNoTracking().ToList();
-        }
+        //public List<user_account> GetAllNguoiDung()
+        //{
+        //    //return MIRACLELANDNETFWEntities1.Instance.user_account.AsNoTracking().ToList();
+        //}
 
         //public NGUOIDUNG GetNguoiDungById(int id)
         //{

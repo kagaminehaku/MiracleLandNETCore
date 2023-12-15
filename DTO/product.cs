@@ -12,14 +12,13 @@ namespace DTO
     using System;
     using System.Collections.Generic;
     
-    public partial class user_account
+    public partial class product
     {
-        public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string type { get; set; }
-        public string email { get; set; }
-        public string address { get; set; }
-        public string phone { get; set; }
+        public int pid { get; set; }
+        public string pname { get; set; }
+        public int pprice { get; set; }
+        public int pquantity { get; set; }
+        public string pinfo { get; set; }
+        public string pimg { get; set; }
     }
 }

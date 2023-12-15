@@ -10,7 +10,7 @@ namespace BUS
         public int checkValidLogin(string usrname, string usrpwd)
         {
             DALuser_account dalUserAccount = new DALuser_account(); // Create a new instance directly
-            List<user_account> found = dalUserAccount.GetAllNguoiDung();
+            List<user_account> found = dalUserAccount.GetAllUser();
             usrpwd = BUSPWDHashing.EncryptData(usrpwd);
             foreach (var user in found)
             {

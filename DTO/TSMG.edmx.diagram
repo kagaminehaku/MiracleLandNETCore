@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="368011e7f75543149d888dc02a1685ca" Name="Diagram1">
         <EntityTypeShape EntityType="TSMGModel.user_account" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TSMGModel.product" Width="1.5" PointX="4.25" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

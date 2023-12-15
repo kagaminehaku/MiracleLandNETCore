@@ -26,5 +26,6 @@ namespace DTO
         }
     
         public virtual DbSet<user_account> user_account { get; set; }
+        public virtual DbSet<product> products { get; set; }
     }
 }

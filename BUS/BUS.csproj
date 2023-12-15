@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="BUSLogin.cs" />
     <Compile Include="BUSPWDHashing.cs" />
+    <Compile Include="BUSuser_account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

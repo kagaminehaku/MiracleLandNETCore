@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
@@ -13,7 +15,7 @@ namespace DAL
     {
         private static DALuser_account instance;
 
-        public List<user_account> GetAllNguoiDung()
+        public List<user_account> GetAllUser()
         {
             using (var dbContext = new TSMGEntities()) // Create a new instance
             {
@@ -21,115 +23,65 @@ namespace DAL
             }
         }
 
-        //public NGUOIDUNG GetNguoiDungById(int id)
-        //{
-        //    return QLTVDb.Instance.NGUOIDUNGs.Find(id);
-        //}
+        public user_account GetUserByUsername(string usn)
+        {
+            using (var dbContext = new TSMGEntities())
+            {
+                return dbContext.user_account.Find(usn);
+            }
+        }
 
-        //public NGUOIDUNG GetNguoiDungByMa(string maNguoiDung)
-        //{
-        //    var res = QLTVDb.Instance.NGUOIDUNGs.AsNoTracking().Where(n => n.MaNguoiDung == maNguoiDung);
-        //    if (res.Any())
-        //        return res.FirstOrDefault();
-        //    return null;
-        //}
+        public int RegisterUser(string usn, string pwd, string tp, string em, string pe, string add)
+        {
+            pwd = DALPWDHashing.EncryptData(pwd);
 
-        //public NGUOIDUNG GetNguoiDungByUsername(string username)
-        //{
-        //    var res = QLTVDb.Instance.NGUOIDUNGs.AsNoTracking().Where(n => n.TenDangNhap == username);
-        //    if (res.Any())
-        //        return res.FirstOrDefault();
-        //    return null;
-        //}
+            try
+            {
+                using (var dbContext = new TSMGEntities()) // Create a new instance
+                {
+                    var user = new user_account
+                    {
+                        username = usn,
+                        password = pwd,
+                        type = tp,
+                        email = em,
+                        phone = pe,
+                        address = add,
+                    };
 
-        //public int AddNguoiDung(string tenNguoiDung, DateTime ngaySinh, string chucVu,
-        //                         string tenDangNhap, string matKhau, int idNhomNguoiDung)
-        //{
+                    dbContext.user_account.Add(user);
+                    dbContext.SaveChanges();
 
-        //    try
-        //    {
-        //        var nd = new NGUOIDUNG
-        //        {
-        //            TenNguoiDung = tenNguoiDung,
-        //            NgaySinh = ngaySinh,
-        //            ChucVu = chucVu,
-        //            TenDangNhap = tenDangNhap,
-        //            MatKhau = matKhau,
-        //            idNhomNguoiDung = idNhomNguoiDung,
-        //            NHOMNGUOIDUNG = DALNhomNguoiDung.Instance.GetNhomNguoiDungById(idNhomNguoiDung)
-        //        };
-        //        QLTVDb.Instance.NGUOIDUNGs.Add(nd);
-        //        QLTVDb.Instance.SaveChanges();
-        //        return nd.id;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.InnerException.ToString());
-        //        return -1;
-        //    }
-        //}
+                    return user.id;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException.ToString());
+                return -1;
+            }
+        }
 
-        //public bool UpdNguoiDung(int id, string tenNguoiDung, DateTime? ngaySinh, string chucVu,
-        //                         int? idNhomNguoiDung)
-        //{
-        //    try
-        //    {
-        //        var nd = GetNguoiDungById(id);
-        //        if (nd == null) return false;
+        public bool UpdatePassword(string usn, string newPassword)
+        {
+            try
+            {
+                using (var dbContext = new TSMGEntities())
+                {
+                    var user = dbContext.user_account.Find(usn);
+                    if (user == null) return false;
 
-        //        if (tenNguoiDung != null) nd.TenNguoiDung = tenNguoiDung;
-        //        if (ngaySinh != null) nd.NgaySinh = ngaySinh;
-        //        if (chucVu != null) nd.ChucVu = chucVu;
-        //        if (idNhomNguoiDung != null) nd.idNhomNguoiDung = (int)idNhomNguoiDung;
-        //        QLTVDb.Instance.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.InnerException.ToString());
-        //        return false;
-        //    }
-        //}
+                    user.password = DALPWDHashing.EncryptData(newPassword);
+                    dbContext.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException.ToString());
+                return false;
+            }
+        }
 
-        //public bool UpdPassword(int id, string password)
-        //{
-        //    try
-        //    {
-        //        var nd = GetNguoiDungById(id);
-        //        if (nd == null) return false;
-
-        //        nd.MatKhau = password;
-        //        QLTVDb.Instance.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.InnerException.ToString());
-        //        return false;
-        //    }
-        //}
-
-        //public bool DelNguoiDung(int id)
-        //{
-        //    try
-        //    {
-        //        var nd = GetNguoiDungById(id);
-        //        if (nd == null) return false;
-
-        //        QLTVDb.Instance.NGUOIDUNGs.Remove(nd);
-        //        QLTVDb.Instance.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.InnerException.ToString());
-        //        return false;
-        //    }
-        //}
-
-        //public List<NGUOIDUNG> getAllNguoiDung()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

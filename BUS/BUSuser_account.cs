@@ -13,11 +13,11 @@ namespace BUS
             return daluseraccount.GetAllUser();
         }
 
-        public int RegisterUser(string usn, string pwd, string tp, string em, string pe, string add)
+        public string RegisterUser(string usn, string pwd, string tp, string em, string pe, string add)
         {
             var daluseraccount = new DALuser_account();
-            int id = daluseraccount.RegisterUser(usn, pwd, tp, em, pe, add);
-            return id;
+            string username = daluseraccount.RegisterUser(usn, pwd, tp, em, pe, add);
+            return username;
         }
 
         public bool UpdatePassword(string usn, string pwd)

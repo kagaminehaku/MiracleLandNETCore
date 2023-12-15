@@ -65,13 +65,16 @@
             // register_password
             // 
             this.register_password.Location = new System.Drawing.Point(166, 97);
+            this.register_password.MaxLength = 32;
             this.register_password.Name = "register_password";
             this.register_password.Size = new System.Drawing.Size(294, 20);
             this.register_password.TabIndex = 9;
+            this.register_password.UseSystemPasswordChar = true;
             // 
             // register_username
             // 
             this.register_username.Location = new System.Drawing.Point(166, 58);
+            this.register_username.MaxLength = 128;
             this.register_username.Name = "register_username";
             this.register_username.Size = new System.Drawing.Size(294, 20);
             this.register_username.TabIndex = 8;
@@ -108,13 +111,16 @@
             // register_password2
             // 
             this.register_password2.Location = new System.Drawing.Point(166, 136);
+            this.register_password2.MaxLength = 32;
             this.register_password2.Name = "register_password2";
             this.register_password2.Size = new System.Drawing.Size(294, 20);
             this.register_password2.TabIndex = 13;
+            this.register_password2.UseSystemPasswordChar = true;
             // 
             // register_email
             // 
             this.register_email.Location = new System.Drawing.Point(166, 171);
+            this.register_email.MaxLength = 128;
             this.register_email.Name = "register_email";
             this.register_email.Size = new System.Drawing.Size(294, 20);
             this.register_email.TabIndex = 14;
@@ -131,6 +137,7 @@
             // register_address
             // 
             this.register_address.Location = new System.Drawing.Point(166, 207);
+            this.register_address.MaxLength = 128;
             this.register_address.Name = "register_address";
             this.register_address.Size = new System.Drawing.Size(294, 20);
             this.register_address.TabIndex = 16;
@@ -147,6 +154,7 @@
             // register_phone
             // 
             this.register_phone.Location = new System.Drawing.Point(166, 245);
+            this.register_phone.MaxLength = 16;
             this.register_phone.Name = "register_phone";
             this.register_phone.Size = new System.Drawing.Size(294, 20);
             this.register_phone.TabIndex = 18;

@@ -13,11 +13,9 @@ namespace DAL
 {
     public class DALuser_account
     {
-        private static DALuser_account instance;
-
         public List<user_account> GetAllUser()
         {
-            using (var dbContext = new TSMGEntities()) // Create a new instance
+            using (var dbContext = new TSMGEntities()) 
             {
                 return dbContext.user_account.AsNoTracking().ToList();
             }
@@ -27,18 +25,24 @@ namespace DAL
         {
             using (var dbContext = new TSMGEntities())
             {
-                return dbContext.user_account.Find(usn);
+                return dbContext.user_account.FirstOrDefault(u => u.username == usn);
             }
         }
 
-        public int RegisterUser(string usn, string pwd, string tp, string em, string pe, string add)
+        public string RegisterUser(string usn, string pwd, string tp, string em, string pe, string add)
         {
             pwd = DALPWDHashing.EncryptData(pwd);
 
             try
             {
-                using (var dbContext = new TSMGEntities()) // Create a new instance
+                using (var dbContext = new TSMGEntities())
                 {
+                    var existingUser = GetUserByUsername(usn);
+                    if (existingUser != null)
+                    {
+                        return "Duplicate";
+                    }
+
                     var user = new user_account
                     {
                         username = usn,
@@ -51,14 +55,13 @@ namespace DAL
 
                     dbContext.user_account.Add(user);
                     dbContext.SaveChanges();
-
-                    return user.id;
+                    return user.username;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.InnerException.ToString());
-                return -1;
+                return "An error occurred: " + ex.Message; 
             }
         }
 

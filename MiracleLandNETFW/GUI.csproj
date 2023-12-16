@@ -95,6 +95,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MiracleLandAdminUI.resx">
+      <DependentUpon>MiracleLandAdminUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MiracleLandMainUI.resx">
       <DependentUpon>MiracleLandMainUI.cs</DependentUpon>
     </EmbeddedResource>

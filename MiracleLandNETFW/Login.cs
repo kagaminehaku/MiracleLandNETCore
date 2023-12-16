@@ -25,16 +25,20 @@ namespace MiracleLandNETFW
             string username = login_username.Text;
             string userpwd = login_password.Text;
             BUSLogin bLogin = new BUSLogin();
-            int id = bLogin.checkValidLogin(username, userpwd);
-            if (id != -1)
+
+            user_account user = bLogin.checkValidLogin(username, userpwd);
+
+            if (user.type == "admin")
             {
-                MessageBox.Show("Đăng nhập thành công!\nChào mừng " + username + "!",
-                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AdminBehavior(user);
+            }
+            if (user.type == "Normal")
+            {
+                CustomerBehavior(user);
             }
             else
             {
-                MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
+                MessageBox.Show("Invail username or password.", "Error !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -42,6 +46,21 @@ namespace MiracleLandNETFW
         {
             Register register = new Register();
             register.ShowDialog();
+        }
+
+        private void AdminBehavior(user_account user)
+        {
+            MessageBox.Show($"Welcome {user.username}!", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MiracleLandAdminUI miracleLandAdminUI = new MiracleLandAdminUI(user);
+            miracleLandAdminUI.FormClosed += (s, args) => this.Show();
+            miracleLandAdminUI.Show();
+            this.Hide();
+        }
+
+        private void CustomerBehavior(user_account user)
+        {
+            MessageBox.Show($"Welcome {user.username}!", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }

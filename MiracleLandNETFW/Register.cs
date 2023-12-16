@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
@@ -48,6 +49,14 @@ namespace MiracleLandNETFW
             string email = register_email.Text;
             string address = register_address.Text;
             string phone = register_phone.Text;
+
+            string emailPattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+
+            if (!Regex.IsMatch(email, emailPattern))
+            {
+                MessageBox.Show("Invalid email format.");
+                return;
+            }
 
             BUSuser_account busUserAccount = new BUSuser_account();
             string result = busUserAccount.RegisterUser(username, password, type, email, phone, address);

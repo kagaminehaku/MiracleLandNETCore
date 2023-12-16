@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace MiracleLandNETFW
 {
     public partial class MiracleLandAdminUI : Form
     {
-        public MiracleLandAdminUI()
+        private user_account loggedInUser;
+        public MiracleLandAdminUI(user_account user)
         {
             InitializeComponent();
+            loggedInUser = user;
         }
     }
 }

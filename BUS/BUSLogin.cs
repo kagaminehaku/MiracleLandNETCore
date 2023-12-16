@@ -7,19 +7,21 @@ namespace BUS
 {
     public class BUSLogin
     {
-        public int checkValidLogin(string usrname, string usrpwd)
+        public user_account checkValidLogin(string usrname, string usrpwd)
         {
-            DALuser_account dalUserAccount = new DALuser_account(); // Create a new instance directly
+            DALuser_account dalUserAccount = new DALuser_account();
             List<user_account> found = dalUserAccount.GetAllUser();
             usrpwd = BUSPWDHashing.EncryptData(usrpwd);
+
             foreach (var user in found)
             {
                 if (user.username == usrname && user.password == usrpwd)
                 {
-                    return user.id;
+                    return user;
                 }
+
             }
-            return -1;
+            return null; 
         }
 
     }

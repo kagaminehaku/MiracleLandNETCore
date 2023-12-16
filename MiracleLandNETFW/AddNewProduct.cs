@@ -50,15 +50,6 @@ namespace MiracleLandNETFW
             AddProductLogic();
         }
 
-        private void DataReset()
-        {
-            add_name.Clear();
-            add_price.Clear();
-            add_quantity.Clear();
-            add_info.Clear();
-            pictureBox1.ImageLocation = null;
-        }
-
         private void AddProductLogic()
         {
             

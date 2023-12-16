@@ -40,11 +40,11 @@
             this.admin_logout = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.pid = new System.Windows.Forms.TextBox();
+            this.pname = new System.Windows.Forms.TextBox();
+            this.pprice = new System.Windows.Forms.TextBox();
+            this.pquantity = new System.Windows.Forms.TextBox();
+            this.pinfo = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,6 +71,7 @@
             this.DGV1.Location = new System.Drawing.Point(41, 246);
             this.DGV1.MultiSelect = false;
             this.DGV1.Name = "DGV1";
+            this.DGV1.ReadOnly = true;
             this.DGV1.RowHeadersVisible = false;
             this.DGV1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -158,49 +159,50 @@
             this.pictureBox1.Location = new System.Drawing.Point(525, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(221, 178);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox2
+            // pid
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(220, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(279, 20);
-            this.textBox2.TabIndex = 7;
+            this.pid.Enabled = false;
+            this.pid.Location = new System.Drawing.Point(220, 43);
+            this.pid.Name = "pid";
+            this.pid.Size = new System.Drawing.Size(279, 20);
+            this.pid.TabIndex = 7;
             // 
-            // textBox3
+            // pname
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(220, 69);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(279, 20);
-            this.textBox3.TabIndex = 8;
+            this.pname.Enabled = false;
+            this.pname.Location = new System.Drawing.Point(220, 69);
+            this.pname.Name = "pname";
+            this.pname.Size = new System.Drawing.Size(279, 20);
+            this.pname.TabIndex = 8;
             // 
-            // textBox4
+            // pprice
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(220, 97);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(279, 20);
-            this.textBox4.TabIndex = 9;
+            this.pprice.Enabled = false;
+            this.pprice.Location = new System.Drawing.Point(220, 97);
+            this.pprice.Name = "pprice";
+            this.pprice.Size = new System.Drawing.Size(279, 20);
+            this.pprice.TabIndex = 9;
             // 
-            // textBox5
+            // pquantity
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(220, 123);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(279, 20);
-            this.textBox5.TabIndex = 10;
+            this.pquantity.Enabled = false;
+            this.pquantity.Location = new System.Drawing.Point(220, 123);
+            this.pquantity.Name = "pquantity";
+            this.pquantity.Size = new System.Drawing.Size(279, 20);
+            this.pquantity.TabIndex = 10;
             // 
-            // richTextBox1
+            // pinfo
             // 
-            this.richTextBox1.Enabled = false;
-            this.richTextBox1.Location = new System.Drawing.Point(220, 150);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(279, 59);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
+            this.pinfo.Enabled = false;
+            this.pinfo.Location = new System.Drawing.Point(220, 150);
+            this.pinfo.Name = "pinfo";
+            this.pinfo.Size = new System.Drawing.Size(279, 59);
+            this.pinfo.TabIndex = 11;
+            this.pinfo.Text = "";
             // 
             // label1
             // 
@@ -257,11 +259,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.pinfo);
+            this.Controls.Add(this.pquantity);
+            this.Controls.Add(this.pprice);
+            this.Controls.Add(this.pname);
+            this.Controls.Add(this.pid);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.admin_logout);
@@ -287,11 +289,11 @@
         private System.Windows.Forms.Button admin_logout;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox pid;
+        private System.Windows.Forms.TextBox pname;
+        private System.Windows.Forms.TextBox pprice;
+        private System.Windows.Forms.TextBox pquantity;
+        private System.Windows.Forms.RichTextBox pinfo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

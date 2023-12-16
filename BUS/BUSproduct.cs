@@ -34,5 +34,11 @@ namespace BUS
             var dalproduct = new DALproduct();
             return dalproduct.RemoveProduct(id);
         }
+
+        public product GetProduct(int id) 
+        {
+            var dalproduct = new DALproduct();
+            return dalproduct.GetProductByID(id);
+        }
     }
 }

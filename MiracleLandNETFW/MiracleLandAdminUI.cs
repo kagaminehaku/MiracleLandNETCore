@@ -54,7 +54,15 @@ namespace MiracleLandNETFW
 
         private void DGV1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("LMAO");
+            int id = (int)DGV1.SelectedRows[0].Cells["Id"].Value;
+            var busproduct = new BUSproduct();
+            var product = busproduct.GetProduct(id);
+            pid.Text = product.pid.ToString();
+            pname.Text = product.pname;
+            pprice.Text = product.pprice.ToString();
+            pquantity.Text = product.pquantity.ToString();
+            pinfo.Text = product.pinfo;
+            pictureBox1.ImageLocation = product.pimg;
         }
     }
 }

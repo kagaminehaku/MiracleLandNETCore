@@ -24,7 +24,7 @@ namespace MiracleLandNETFW
         {
             string username = login_username.Text;
             string userpwd = login_password.Text;
-            BUSLogin bLogin = new BUSLogin();
+            var bLogin = new BUSLogin();
 
             user_account user = bLogin.checkValidLogin(username, userpwd);
 

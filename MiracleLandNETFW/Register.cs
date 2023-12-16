@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -58,6 +59,8 @@ namespace MiracleLandNETFW
                 return;
             }
 
+            ResetRegisterData();
+
             BUSuser_account busUserAccount = new BUSuser_account();
             string result = busUserAccount.RegisterUser(username, password, type, email, phone, address);
             if (result == username)
@@ -72,6 +75,15 @@ namespace MiracleLandNETFW
             {
                 MessageBox.Show("An Unexpected Error Occurred.");
             }
+        }
+
+        private void ResetRegisterData()
+        {
+            register_username.Clear();
+            register_password.Clear();
+            register_email.Clear();
+            register_address.Clear();
+            register_phone.Clear();
         }
     }
 }

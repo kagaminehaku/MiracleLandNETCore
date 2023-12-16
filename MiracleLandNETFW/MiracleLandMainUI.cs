@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DTO;
+using BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,20 @@ namespace MiracleLandNETFW
 {
     public partial class MiracleLandMainUI : Form
     {
-        public MiracleLandMainUI()
+        private user_account loggedInUser;
+        private string setting;
+        public MiracleLandMainUI(user_account user)
         {
             InitializeComponent();
+            loggedInUser = user;
+            if (loggedInUser == null)
+            {
+                setting = "guess";
+            }
+            if (loggedInUser != null)
+            {
+                setting = "logged";
+            }
         }
     }
 }

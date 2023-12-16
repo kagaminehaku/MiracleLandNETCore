@@ -31,7 +31,6 @@ namespace DAL
 
         public string RegisterUser(string usn, string pwd, string tp, string em, string pe, string add)
         {
-            pwd = DALPWDHashing.EncryptData(pwd);
 
             try
             {
@@ -74,7 +73,8 @@ namespace DAL
                     var user = dbContext.user_account.Find(usn);
                     if (user == null) return false;
 
-                    user.password = DALPWDHashing.EncryptData(newPassword);
+                    user.password = newPassword;
+
                     dbContext.SaveChanges();
                     return true;
                 }

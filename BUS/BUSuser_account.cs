@@ -15,15 +15,17 @@ namespace BUS
 
         public string RegisterUser(string usn, string pwd, string tp, string em, string pe, string add)
         {
+            pwd = BUSPWDHashing.EncryptData(pwd);
             var daluseraccount = new DALuser_account();
             string username = daluseraccount.RegisterUser(usn, pwd, tp, em, pe, add);
             return username;
         }
 
-        public bool UpdatePassword(string usn, string pwd)
+        public bool UpdatePassword(string usn, string newpwd)
         {
+            newpwd = BUSPWDHashing.EncryptData(newpwd);
             var daluseraccount = new DALuser_account();
-            return daluseraccount.UpdatePassword(usn, pwd);
+            return daluseraccount.UpdatePassword(usn, newpwd);
         }
     }
 }

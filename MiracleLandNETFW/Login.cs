@@ -28,6 +28,8 @@ namespace MiracleLandNETFW
 
             user_account user = bLogin.checkValidLogin(username, userpwd);
 
+            ResetLoginData();
+
             if (user.type == "admin")
             {
                 AdminBehavior(user);
@@ -60,7 +62,16 @@ namespace MiracleLandNETFW
         private void CustomerBehavior(user_account user)
         {
             MessageBox.Show($"Welcome {user.username}!", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MiracleLandMainUI miracleLandMainUI = new MiracleLandMainUI(user);
+            miracleLandMainUI.FormClosed += (s, args) => this.Show();
+            miracleLandMainUI.Show();
+            this.Hide();
+        }
 
+        private void ResetLoginData()
+        {
+            login_username.Clear();
+            login_password.Clear();
         }
     }
 }

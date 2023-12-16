@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BUS
 {
@@ -29,8 +30,9 @@ namespace BUS
             return dalproduct.UpdateProduct(id, newpname, newpprice, newpquantity, newpinfo, newpimg);
         }
 
-        public bool RemoveProduct(int id)
+        public bool RemoveProduct(int id,string imagepath)
         {
+            File.Delete(imagepath);
             var dalproduct = new DALproduct();
             return dalproduct.RemoveProduct(id);
         }
@@ -40,5 +42,7 @@ namespace BUS
             var dalproduct = new DALproduct();
             return dalproduct.GetProductByID(id);
         }
+
+
     }
 }

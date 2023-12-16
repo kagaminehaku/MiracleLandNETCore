@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.login_btn = new System.Windows.Forms.Button();
             this.login_username = new System.Windows.Forms.TextBox();
             this.login_password = new System.Windows.Forms.TextBox();
@@ -88,6 +89,7 @@
             this.Guest.TabIndex = 6;
             this.Guest.Text = "Login as Guest";
             this.Guest.UseVisualStyleBackColor = true;
+            this.Guest.Click += new System.EventHandler(this.Guest_Click);
             // 
             // reg_btn
             // 
@@ -111,6 +113,7 @@
             this.Controls.Add(this.login_password);
             this.Controls.Add(this.login_username);
             this.Controls.Add(this.login_btn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);

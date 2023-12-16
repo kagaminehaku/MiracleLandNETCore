@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MiracleLandAdminUI));
             this.DGV1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,7 +41,7 @@
             this.admin_logout = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pid = new System.Windows.Forms.TextBox();
+            this.admin_pid = new System.Windows.Forms.TextBox();
             this.pname = new System.Windows.Forms.TextBox();
             this.pprice = new System.Windows.Forms.TextBox();
             this.pquantity = new System.Windows.Forms.TextBox();
@@ -84,30 +85,35 @@
             this.id.FillWeight = 30F;
             this.id.HeaderText = "ID";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
             // name
             // 
             this.name.FillWeight = 50F;
             this.name.HeaderText = "Name";
             this.name.Name = "name";
+            this.name.ReadOnly = true;
             // 
             // price
             // 
             this.price.FillWeight = 50F;
             this.price.HeaderText = "Price";
             this.price.Name = "price";
+            this.price.ReadOnly = true;
             // 
             // quantity
             // 
             this.quantity.FillWeight = 40F;
             this.quantity.HeaderText = "Quantity";
             this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
             // 
             // info
             // 
             this.info.FillWeight = 150F;
             this.info.HeaderText = "Info";
             this.info.Name = "info";
+            this.info.ReadOnly = true;
             // 
             // admin_add
             // 
@@ -127,6 +133,7 @@
             this.admin_delete.TabIndex = 2;
             this.admin_delete.Text = "❌ Delete Product";
             this.admin_delete.UseVisualStyleBackColor = true;
+            this.admin_delete.Click += new System.EventHandler(this.admin_delete_Click);
             // 
             // admin_edit
             // 
@@ -136,6 +143,7 @@
             this.admin_edit.TabIndex = 3;
             this.admin_edit.Text = "📝 Edit Product";
             this.admin_edit.UseVisualStyleBackColor = true;
+            this.admin_edit.Click += new System.EventHandler(this.admin_edit_Click);
             // 
             // admin_logout
             // 
@@ -163,13 +171,13 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // pid
+            // admin_pid
             // 
-            this.pid.Enabled = false;
-            this.pid.Location = new System.Drawing.Point(220, 43);
-            this.pid.Name = "pid";
-            this.pid.Size = new System.Drawing.Size(279, 20);
-            this.pid.TabIndex = 7;
+            this.admin_pid.Enabled = false;
+            this.admin_pid.Location = new System.Drawing.Point(220, 43);
+            this.admin_pid.Name = "admin_pid";
+            this.admin_pid.Size = new System.Drawing.Size(279, 20);
+            this.admin_pid.TabIndex = 7;
             // 
             // pname
             // 
@@ -263,7 +271,7 @@
             this.Controls.Add(this.pquantity);
             this.Controls.Add(this.pprice);
             this.Controls.Add(this.pname);
-            this.Controls.Add(this.pid);
+            this.Controls.Add(this.admin_pid);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.admin_logout);
@@ -271,6 +279,7 @@
             this.Controls.Add(this.admin_delete);
             this.Controls.Add(this.admin_add);
             this.Controls.Add(this.DGV1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MiracleLandAdminUI";
             this.Text = "Admin Control Panel";
             ((System.ComponentModel.ISupportInitialize)(this.DGV1)).EndInit();
@@ -289,7 +298,7 @@
         private System.Windows.Forms.Button admin_logout;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox pid;
+        private System.Windows.Forms.TextBox admin_pid;
         private System.Windows.Forms.TextBox pname;
         private System.Windows.Forms.TextBox pprice;
         private System.Windows.Forms.TextBox pquantity;

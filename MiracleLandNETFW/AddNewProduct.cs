@@ -48,7 +48,15 @@ namespace MiracleLandNETFW
         private void add_Click(object sender, EventArgs e)
         {
             AddProductLogic();
-            this.Close();
+        }
+
+        private void DataReset()
+        {
+            add_name.Clear();
+            add_price.Clear();
+            add_quantity.Clear();
+            add_info.Clear();
+            pictureBox1.ImageLocation = null;
         }
 
         private void AddProductLogic()
@@ -72,8 +80,9 @@ namespace MiracleLandNETFW
                 if (productname == add_name.Text)
                 {
                     MessageBox.Show($"{productname}" + "Added", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
-                if (productname != add_name.Text)
+                else if (productname != add_name.Text)
                 {
                     MessageBox.Show("An Unexpected Error Occurred.");
                     return;

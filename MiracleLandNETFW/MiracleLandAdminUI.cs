@@ -24,6 +24,7 @@ namespace MiracleLandNETFW
 
         private void LoadDataToDGV()
         {
+            DGV1.Rows.Clear();
             BUSproduct busproduct = new BUSproduct();
             List<product> products = busproduct.GetAllProduct();
             foreach (product product in products)
@@ -49,7 +50,13 @@ namespace MiracleLandNETFW
 
         private void ShowDataReset()
         {
-            
+            LoadDataToDGV();
+            admin_pid.Clear();
+            pname.Clear();
+            pprice.Clear();
+            pquantity.Clear();
+            pinfo.Clear();
+            pictureBox1.ImageLocation = null;
         }
 
         private void DGV1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -57,12 +64,37 @@ namespace MiracleLandNETFW
             int id = (int)DGV1.SelectedRows[0].Cells["Id"].Value;
             var busproduct = new BUSproduct();
             var product = busproduct.GetProduct(id);
-            pid.Text = product.pid.ToString();
+            admin_pid.Text = product.pid.ToString();
             pname.Text = product.pname;
             pprice.Text = product.pprice.ToString();
             pquantity.Text = product.pquantity.ToString();
             pinfo.Text = product.pinfo;
             pictureBox1.ImageLocation = product.pimg;
+        }
+
+        private void admin_delete_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(admin_pid.Text))
+            {
+                MessageBox.Show("Please select a product.");
+                return;
+            }
+            else if (int.TryParse(admin_pid.Text, out int productid))
+            {
+                var busproduct = new BUSproduct();
+                string imagepath = pictureBox1.ImageLocation;
+                if (busproduct.RemoveProduct(productid,imagepath))
+                {
+                    MessageBox.Show("Product delete sucessfully");
+                    ShowDataReset();
+                    return;
+                }
+            }
+        }
+
+        private void admin_edit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

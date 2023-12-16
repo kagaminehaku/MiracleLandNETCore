@@ -9,7 +9,7 @@ namespace BUS
     {
         public user_account checkValidLogin(string usrname, string usrpwd)
         {
-            DALuser_account dalUserAccount = new DALuser_account();
+            var dalUserAccount = new DALuser_account();
             List<user_account> found = dalUserAccount.GetAllUser();
             usrpwd = BUSPWDHashing.EncryptData(usrpwd);
 

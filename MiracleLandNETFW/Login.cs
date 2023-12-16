@@ -72,5 +72,10 @@ namespace MiracleLandNETFW
             login_username.Clear();
             login_password.Clear();
         }
+
+        private void Guest_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

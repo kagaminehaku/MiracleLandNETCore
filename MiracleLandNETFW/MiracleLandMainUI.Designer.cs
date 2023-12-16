@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mainui_login = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -50,11 +51,22 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // mainui_login
+            // 
+            this.mainui_login.Location = new System.Drawing.Point(42, 54);
+            this.mainui_login.Name = "mainui_login";
+            this.mainui_login.Size = new System.Drawing.Size(75, 23);
+            this.mainui_login.TabIndex = 2;
+            this.mainui_login.Text = "Login";
+            this.mainui_login.UseVisualStyleBackColor = true;
+            this.mainui_login.Click += new System.EventHandler(this.mainui_login_Click);
+            // 
             // MiracleLandMainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 638);
+            this.Controls.Add(this.mainui_login);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MiracleLandMainUI";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button mainui_login;
     }
 }

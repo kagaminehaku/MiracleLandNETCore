@@ -10,7 +10,7 @@ namespace BUS
 {
     public class BUSproduct
     {
-        public List<product> GetAllNguoiDung()
+        public List<product> GetAllProduct()
         {
             var dalproduct = new DALproduct();
             return dalproduct.GetAllProduct();

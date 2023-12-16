@@ -61,7 +61,6 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.InnerException.ToString());
                 return "An error occurred: " + ex.Message;
             }
         }

@@ -29,18 +29,17 @@ namespace MiracleLandNETFW
             user_account user = bLogin.checkValidLogin(username, userpwd);
 
             ResetLoginData();
-
-            if (user.type == "admin")
+            if (user == null)
+            {
+                MessageBox.Show("Invail username or password.", "Error !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (user.type == "admin")
             {
                 AdminBehavior(user);
             }
-            if (user.type == "Normal")
+            else if (user.type == "Normal")
             {
                 CustomerBehavior(user);
-            }
-            else
-            {
-                MessageBox.Show("Invail username or password.", "Error !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

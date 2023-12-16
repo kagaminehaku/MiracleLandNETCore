@@ -28,6 +28,15 @@ namespace MiracleLandNETFW
             {
                 setting = "logged";
             }
+
+        }
+
+        private void mainui_login_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.FormClosed += (s, args) => this.Show();
+            login.Show();
+            this.Hide();     
         }
     }
 }

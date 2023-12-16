@@ -7,11 +7,6 @@ namespace BUS
 {
     public class BUSuser_account
     {
-        public List<user_account> GetAllNguoiDung()
-        {
-            var daluseraccount = new DALuser_account();
-            return daluseraccount.GetAllUser();
-        }
 
         public string RegisterUser(string usn, string pwd, string tp, string em, string pe, string add)
         {

@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGV1 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.info = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.admin_add = new System.Windows.Forms.Button();
             this.admin_delete = new System.Windows.Forms.Button();
             this.admin_edit = new System.Windows.Forms.Button();
@@ -45,35 +50,63 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.info = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DGV1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DGV1.AllowUserToAddRows = false;
+            this.DGV1.AllowUserToDeleteRows = false;
+            this.DGV1.AllowUserToResizeColumns = false;
+            this.DGV1.AllowUserToResizeRows = false;
+            this.DGV1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.name,
             this.price,
             this.quantity,
             this.info});
-            this.dataGridView1.Location = new System.Drawing.Point(41, 246);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(705, 163);
-            this.dataGridView1.TabIndex = 0;
+            this.DGV1.Location = new System.Drawing.Point(41, 246);
+            this.DGV1.MultiSelect = false;
+            this.DGV1.Name = "DGV1";
+            this.DGV1.RowHeadersVisible = false;
+            this.DGV1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.DGV1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGV1.Size = new System.Drawing.Size(705, 163);
+            this.DGV1.TabIndex = 0;
+            this.DGV1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV1_CellClick);
+            // 
+            // id
+            // 
+            this.id.FillWeight = 30F;
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            // 
+            // name
+            // 
+            this.name.FillWeight = 50F;
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            // 
+            // price
+            // 
+            this.price.FillWeight = 50F;
+            this.price.HeaderText = "Price";
+            this.price.Name = "price";
+            // 
+            // quantity
+            // 
+            this.quantity.FillWeight = 40F;
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.Name = "quantity";
+            // 
+            // info
+            // 
+            this.info.FillWeight = 150F;
+            this.info.HeaderText = "Info";
+            this.info.Name = "info";
             // 
             // admin_add
             // 
@@ -83,6 +116,7 @@
             this.admin_add.TabIndex = 1;
             this.admin_add.Text = "➕ New Product";
             this.admin_add.UseVisualStyleBackColor = true;
+            this.admin_add.Click += new System.EventHandler(this.admin_add_Click);
             // 
             // admin_delete
             // 
@@ -110,6 +144,7 @@
             this.admin_logout.TabIndex = 4;
             this.admin_logout.Text = "🔓Logout";
             this.admin_logout.UseVisualStyleBackColor = true;
+            this.admin_logout.Click += new System.EventHandler(this.admin_logout_Click);
             // 
             // textBox1
             // 
@@ -163,7 +198,7 @@
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(220, 150);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(279, 50);
+            this.richTextBox1.Size = new System.Drawing.Size(279, 59);
             this.richTextBox1.TabIndex = 11;
             this.richTextBox1.Text = "";
             // 
@@ -212,36 +247,6 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Info";
             // 
-            // id
-            // 
-            this.id.FillWeight = 30F;
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            // 
-            // name
-            // 
-            this.name.FillWeight = 50F;
-            this.name.HeaderText = "Name";
-            this.name.Name = "name";
-            // 
-            // price
-            // 
-            this.price.FillWeight = 50F;
-            this.price.HeaderText = "Price";
-            this.price.Name = "price";
-            // 
-            // quantity
-            // 
-            this.quantity.FillWeight = 40F;
-            this.quantity.HeaderText = "Quantity";
-            this.quantity.Name = "quantity";
-            // 
-            // info
-            // 
-            this.info.FillWeight = 150F;
-            this.info.HeaderText = "Info";
-            this.info.Name = "info";
-            // 
             // MiracleLandAdminUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,10 +268,10 @@
             this.Controls.Add(this.admin_edit);
             this.Controls.Add(this.admin_delete);
             this.Controls.Add(this.admin_add);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DGV1);
             this.Name = "MiracleLandAdminUI";
             this.Text = "Admin Control Panel";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -275,7 +280,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGV1;
         private System.Windows.Forms.Button admin_add;
         private System.Windows.Forms.Button admin_delete;
         private System.Windows.Forms.Button admin_edit;

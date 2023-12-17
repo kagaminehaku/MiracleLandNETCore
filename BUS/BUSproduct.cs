@@ -37,6 +37,11 @@ namespace BUS
             return dalproduct.RemoveProduct(id);
         }
 
+        public void RemoveImage(string imagepath)
+        {
+            File.Delete(imagepath);
+        }
+
         public product GetProduct(int id) 
         {
             var dalproduct = new DALproduct();

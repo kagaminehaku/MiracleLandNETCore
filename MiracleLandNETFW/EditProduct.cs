@@ -17,11 +17,13 @@ namespace MiracleLandNETFW
     public partial class EditProduct : Form
     {
         private int eid;
+        private string currentimagepath;
         public EditProduct(int id)
         {
             eid = id;
             InitializeComponent();
             LoadProductToEdit();
+            currentimagepath = pictureBox1.ImageLocation;
         }
 
         private void edit_Click(object sender, EventArgs e)
@@ -44,6 +46,10 @@ namespace MiracleLandNETFW
                 if (editstate)
                 {
                     MessageBox.Show($"{edit_name.Text}" + "Edit", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if(currentimagepath != imagePath)
+                    {
+                        busproduct.RemoveImage(currentimagepath);
+                    }
                     this.Close();
                 }
                 else if (editstate == false)

@@ -18,6 +18,7 @@ namespace MiracleLandNETFW
         public AddNewProduct()
         {
             InitializeComponent();
+            ControlBox = false;
         }
 
         private void NewImage()

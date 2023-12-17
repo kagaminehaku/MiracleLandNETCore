@@ -20,6 +20,7 @@ namespace MiracleLandNETFW
             InitializeComponent();
             loggedInUser = user;
             LoadDataToDGV();
+            ControlBox = false;
         }
 
         private void LoadDataToDGV()

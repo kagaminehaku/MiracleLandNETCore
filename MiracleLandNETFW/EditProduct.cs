@@ -24,6 +24,7 @@ namespace MiracleLandNETFW
             InitializeComponent();
             LoadProductToEdit();
             currentimagepath = pictureBox1.ImageLocation;
+            ControlBox = false;
         }
 
         private void edit_Click(object sender, EventArgs e)

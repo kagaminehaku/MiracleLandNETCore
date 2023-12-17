@@ -51,8 +51,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DGV1
@@ -69,7 +82,7 @@
             this.price,
             this.quantity,
             this.info});
-            this.DGV1.Location = new System.Drawing.Point(41, 246);
+            this.DGV1.Location = new System.Drawing.Point(19, 231);
             this.DGV1.MultiSelect = false;
             this.DGV1.Name = "DGV1";
             this.DGV1.ReadOnly = true;
@@ -117,7 +130,7 @@
             // 
             // admin_add
             // 
-            this.admin_add.Location = new System.Drawing.Point(41, 43);
+            this.admin_add.Location = new System.Drawing.Point(19, 28);
             this.admin_add.Name = "admin_add";
             this.admin_add.Size = new System.Drawing.Size(103, 33);
             this.admin_add.TabIndex = 1;
@@ -127,7 +140,7 @@
             // 
             // admin_delete
             // 
-            this.admin_delete.Location = new System.Drawing.Point(41, 82);
+            this.admin_delete.Location = new System.Drawing.Point(19, 67);
             this.admin_delete.Name = "admin_delete";
             this.admin_delete.Size = new System.Drawing.Size(103, 35);
             this.admin_delete.TabIndex = 2;
@@ -137,7 +150,7 @@
             // 
             // admin_edit
             // 
-            this.admin_edit.Location = new System.Drawing.Point(41, 123);
+            this.admin_edit.Location = new System.Drawing.Point(19, 108);
             this.admin_edit.Name = "admin_edit";
             this.admin_edit.Size = new System.Drawing.Size(103, 37);
             this.admin_edit.TabIndex = 3;
@@ -147,7 +160,7 @@
             // 
             // admin_logout
             // 
-            this.admin_logout.Location = new System.Drawing.Point(41, 166);
+            this.admin_logout.Location = new System.Drawing.Point(19, 151);
             this.admin_logout.Name = "admin_logout";
             this.admin_logout.Size = new System.Drawing.Size(103, 34);
             this.admin_logout.TabIndex = 4;
@@ -157,14 +170,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(41, 215);
+            this.textBox1.Location = new System.Drawing.Point(19, 200);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(705, 20);
             this.textBox1.TabIndex = 5;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(525, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(503, 16);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(221, 178);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -174,7 +187,7 @@
             // admin_pid
             // 
             this.admin_pid.Enabled = false;
-            this.admin_pid.Location = new System.Drawing.Point(220, 43);
+            this.admin_pid.Location = new System.Drawing.Point(198, 28);
             this.admin_pid.Name = "admin_pid";
             this.admin_pid.Size = new System.Drawing.Size(279, 20);
             this.admin_pid.TabIndex = 7;
@@ -182,7 +195,7 @@
             // pname
             // 
             this.pname.Enabled = false;
-            this.pname.Location = new System.Drawing.Point(220, 69);
+            this.pname.Location = new System.Drawing.Point(198, 54);
             this.pname.Name = "pname";
             this.pname.Size = new System.Drawing.Size(279, 20);
             this.pname.TabIndex = 8;
@@ -190,7 +203,7 @@
             // pprice
             // 
             this.pprice.Enabled = false;
-            this.pprice.Location = new System.Drawing.Point(220, 97);
+            this.pprice.Location = new System.Drawing.Point(198, 82);
             this.pprice.Name = "pprice";
             this.pprice.Size = new System.Drawing.Size(279, 20);
             this.pprice.TabIndex = 9;
@@ -198,7 +211,7 @@
             // pquantity
             // 
             this.pquantity.Enabled = false;
-            this.pquantity.Location = new System.Drawing.Point(220, 123);
+            this.pquantity.Location = new System.Drawing.Point(198, 108);
             this.pquantity.Name = "pquantity";
             this.pquantity.Size = new System.Drawing.Size(279, 20);
             this.pquantity.TabIndex = 10;
@@ -206,7 +219,7 @@
             // pinfo
             // 
             this.pinfo.Enabled = false;
-            this.pinfo.Location = new System.Drawing.Point(220, 150);
+            this.pinfo.Location = new System.Drawing.Point(198, 135);
             this.pinfo.Name = "pinfo";
             this.pinfo.Size = new System.Drawing.Size(279, 59);
             this.pinfo.TabIndex = 11;
@@ -215,7 +228,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(167, 46);
+            this.label1.Location = new System.Drawing.Point(145, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 12;
@@ -224,7 +237,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(167, 72);
+            this.label2.Location = new System.Drawing.Point(145, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 13;
@@ -233,7 +246,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(167, 100);
+            this.label3.Location = new System.Drawing.Point(145, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 14;
@@ -242,7 +255,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(167, 126);
+            this.label4.Location = new System.Drawing.Point(145, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 15;
@@ -251,41 +264,143 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(167, 166);
+            this.label5.Location = new System.Drawing.Point(145, 151);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(25, 13);
             this.label5.TabIndex = 16;
             this.label5.Text = "Info";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(750, 436);
+            this.tabControl1.TabIndex = 17;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.admin_add);
+            this.tabPage1.Controls.Add(this.admin_logout);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.Controls.Add(this.pinfo);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.admin_edit);
+            this.tabPage1.Controls.Add(this.pname);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.DGV1);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.admin_pid);
+            this.tabPage1.Controls.Add(this.pquantity);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.admin_delete);
+            this.tabPage1.Controls.Add(this.pprice);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(742, 410);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Product Manage";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.textBox4);
+            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(742, 410);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Account";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(207, 107);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(303, 20);
+            this.textBox2.TabIndex = 0;
+            this.textBox2.UseSystemPasswordChar = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(207, 148);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(303, 20);
+            this.textBox3.TabIndex = 1;
+            this.textBox3.UseSystemPasswordChar = true;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(207, 191);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(303, 20);
+            this.textBox4.TabIndex = 2;
+            this.textBox4.UseSystemPasswordChar = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(111, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Current password";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(111, 151);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "New password";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(110, 194);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Confirm password";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(283, 236);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(142, 34);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Change password";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // MiracleLandAdminUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 430);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pinfo);
-            this.Controls.Add(this.pquantity);
-            this.Controls.Add(this.pprice);
-            this.Controls.Add(this.pname);
-            this.Controls.Add(this.admin_pid);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.admin_logout);
-            this.Controls.Add(this.admin_edit);
-            this.Controls.Add(this.admin_delete);
-            this.Controls.Add(this.admin_add);
-            this.Controls.Add(this.DGV1);
+            this.ClientSize = new System.Drawing.Size(775, 462);
+            this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MiracleLandAdminUI";
             this.Text = "Admin Control Panel";
             ((System.ComponentModel.ISupportInitialize)(this.DGV1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -313,5 +428,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn info;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }

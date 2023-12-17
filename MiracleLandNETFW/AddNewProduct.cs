@@ -64,7 +64,7 @@ namespace MiracleLandNETFW
                 MessageBox.Show("Please fill all field.");
                 return;
             }
-            BUSproduct busproduct = new BUSproduct();
+            var busproduct = new BUSproduct();
             if (int.TryParse(add_price.Text, out int price) && int.TryParse(add_quantity.Text, out int quantity))
             {
                 string productname = busproduct.AddNewProduct(add_name.Text, price, quantity, add_info.Text, imagePath);

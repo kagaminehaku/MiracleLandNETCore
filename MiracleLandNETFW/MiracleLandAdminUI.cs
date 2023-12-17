@@ -95,6 +95,19 @@ namespace MiracleLandNETFW
         private void admin_edit_Click(object sender, EventArgs e)
         {
 
+            if (String.IsNullOrEmpty(admin_pid.Text))
+            {
+                MessageBox.Show("Please select a product.");
+                return;
+            }
+            else if (int.TryParse(admin_pid.Text, out int productid))
+            {
+                var editproduct = new EditProduct(productid);
+                editproduct.FormClosed += (s, args) => this.Show();
+                editproduct.FormClosed += (s, args) => LoadDataToDGV();
+                editproduct.Show();
+                this.Hide();
+            }
         }
     }
 }

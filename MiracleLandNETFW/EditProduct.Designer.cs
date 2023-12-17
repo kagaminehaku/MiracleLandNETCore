@@ -35,10 +35,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.add_info = new System.Windows.Forms.RichTextBox();
-            this.add_quantity = new System.Windows.Forms.TextBox();
-            this.add_price = new System.Windows.Forms.TextBox();
-            this.add_name = new System.Windows.Forms.TextBox();
+            this.edit_info = new System.Windows.Forms.RichTextBox();
+            this.edit_quantity = new System.Windows.Forms.TextBox();
+            this.edit_price = new System.Windows.Forms.TextBox();
+            this.edit_name = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +51,7 @@
             this.cancel.TabIndex = 41;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = true;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // edit
             // 
@@ -98,38 +99,40 @@
             this.label2.TabIndex = 36;
             this.label2.Text = "Name";
             // 
-            // add_info
+            // edit_info
             // 
-            this.add_info.Location = new System.Drawing.Point(78, 102);
-            this.add_info.MaxLength = 256;
-            this.add_info.Name = "add_info";
-            this.add_info.Size = new System.Drawing.Size(279, 69);
-            this.add_info.TabIndex = 35;
-            this.add_info.Text = "";
+            this.edit_info.Location = new System.Drawing.Point(78, 102);
+            this.edit_info.MaxLength = 256;
+            this.edit_info.Name = "edit_info";
+            this.edit_info.Size = new System.Drawing.Size(279, 69);
+            this.edit_info.TabIndex = 35;
+            this.edit_info.Text = "";
             // 
-            // add_quantity
+            // edit_quantity
             // 
-            this.add_quantity.Location = new System.Drawing.Point(78, 75);
-            this.add_quantity.MaxLength = 16;
-            this.add_quantity.Name = "add_quantity";
-            this.add_quantity.Size = new System.Drawing.Size(279, 20);
-            this.add_quantity.TabIndex = 34;
+            this.edit_quantity.Location = new System.Drawing.Point(78, 75);
+            this.edit_quantity.MaxLength = 16;
+            this.edit_quantity.Name = "edit_quantity";
+            this.edit_quantity.Size = new System.Drawing.Size(279, 20);
+            this.edit_quantity.TabIndex = 34;
+            this.edit_quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_quantity_KeyPress);
             // 
-            // add_price
+            // edit_price
             // 
-            this.add_price.Location = new System.Drawing.Point(78, 49);
-            this.add_price.MaxLength = 16;
-            this.add_price.Name = "add_price";
-            this.add_price.Size = new System.Drawing.Size(279, 20);
-            this.add_price.TabIndex = 33;
+            this.edit_price.Location = new System.Drawing.Point(78, 49);
+            this.edit_price.MaxLength = 16;
+            this.edit_price.Name = "edit_price";
+            this.edit_price.Size = new System.Drawing.Size(279, 20);
+            this.edit_price.TabIndex = 33;
+            this.edit_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edit_price_KeyPress);
             // 
-            // add_name
+            // edit_name
             // 
-            this.add_name.Location = new System.Drawing.Point(78, 21);
-            this.add_name.MaxLength = 64;
-            this.add_name.Name = "add_name";
-            this.add_name.Size = new System.Drawing.Size(279, 20);
-            this.add_name.TabIndex = 32;
+            this.edit_name.Location = new System.Drawing.Point(78, 21);
+            this.edit_name.MaxLength = 64;
+            this.edit_name.Name = "edit_name";
+            this.edit_name.Size = new System.Drawing.Size(279, 20);
+            this.edit_name.TabIndex = 32;
             // 
             // pictureBox1
             // 
@@ -139,6 +142,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // EditProduct
             // 
@@ -151,10 +155,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.add_info);
-            this.Controls.Add(this.add_quantity);
-            this.Controls.Add(this.add_price);
-            this.Controls.Add(this.add_name);
+            this.Controls.Add(this.edit_info);
+            this.Controls.Add(this.edit_quantity);
+            this.Controls.Add(this.edit_price);
+            this.Controls.Add(this.edit_name);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditProduct";
@@ -173,10 +177,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox add_info;
-        private System.Windows.Forms.TextBox add_quantity;
-        private System.Windows.Forms.TextBox add_price;
-        private System.Windows.Forms.TextBox add_name;
+        private System.Windows.Forms.RichTextBox edit_info;
+        private System.Windows.Forms.TextBox edit_quantity;
+        private System.Windows.Forms.TextBox edit_price;
+        private System.Windows.Forms.TextBox edit_name;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

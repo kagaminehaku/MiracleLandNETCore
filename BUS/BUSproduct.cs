@@ -24,7 +24,7 @@ namespace BUS
             return productname;
         }
 
-        public bool UpdateProduct(int id, string newpname, int newpprice, int newpquantity, string newpinfo, string newpimg)
+        public bool EditProduct(int id, string newpname, int newpprice, int newpquantity, string newpinfo, string newpimg)
         {
             var dalproduct = new DALproduct();
             return dalproduct.UpdateProduct(id, newpname, newpprice, newpquantity, newpinfo, newpimg);

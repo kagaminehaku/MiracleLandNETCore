@@ -267,7 +267,7 @@ namespace MiracleLandNETFW
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (DGV2.SelectedRows.Count > 0)
+            if (String.IsNullOrEmpty(cart_id.Text))
             {
                 MessageBox.Show("Please select a product.");
                 return;
@@ -280,7 +280,7 @@ namespace MiracleLandNETFW
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (DGV2.SelectedRows.Count > 0)
+            if (String.IsNullOrEmpty(cart_id.Text))
             {
                 MessageBox.Show("Please select a product.");
                 return;
@@ -291,6 +291,7 @@ namespace MiracleLandNETFW
             if (result == DialogResult.Yes)
             {
                 DGV2.Rows.RemoveAt(selectedIndex);
+                CartClear();
             }
         }
 
@@ -306,7 +307,59 @@ namespace MiracleLandNETFW
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int total = 0;
+            if (DGV2 == null)
+            {
+                MessageBox.Show("Please add something to cart");
+                return;
+            }
+            foreach (DataGridViewRow row in DGV2.Rows)
+            {
+                if (row.Cells["price2"].Value != null && row.Cells["quantity2"].Value != null)
+                {
+                    if (int.TryParse(row.Cells["price2"].Value.ToString(), out int price) &&
+                        int.TryParse(row.Cells["quantity2"].Value.ToString(), out int quantity))
+                    {
+                        total += price * quantity;
+                    }
+                }
+            }
+        }
 
+        private void DGV2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateTotalPrice();
+        }
+
+        private void DGV2_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            UpdateTotalPrice();
+        }
+
+        private void DGV2_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            UpdateTotalPrice();
+        }
+
+        private void UpdateTotalPrice()
+        {
+            int total = 0;
+            if (DGV2 == null)
+            {
+                return;
+            }
+            foreach (DataGridViewRow row in DGV2.Rows)
+            {
+                if (row.Cells["price2"].Value != null && row.Cells["quantity2"].Value != null)
+                {
+                    if (int.TryParse(row.Cells["price2"].Value.ToString(), out int price) &&
+                        int.TryParse(row.Cells["quantity2"].Value.ToString(), out int quantity))
+                    {
+                        total += price * quantity;
+                    }
+                }
+            }
+            button3.Text = "💵 Total: " + total.ToString();
         }
     }
 }

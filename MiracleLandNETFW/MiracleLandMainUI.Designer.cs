@@ -83,6 +83,7 @@
             this.cn_password = new System.Windows.Forms.TextBox();
             this.n_password = new System.Windows.Forms.TextBox();
             this.current_password = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -336,6 +337,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.pictureBox2);
             this.tabPage2.Controls.Add(this.DGV2);
             this.tabPage2.Controls.Add(this.button2);
@@ -393,6 +395,9 @@
             this.DGV2.Size = new System.Drawing.Size(705, 319);
             this.DGV2.TabIndex = 52;
             this.DGV2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV2_CellClick);
+            this.DGV2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV2_CellValueChanged);
+            this.DGV2.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DGV2_RowsAdded);
+            this.DGV2.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DGV2_RowsRemoved);
             // 
             // id2
             // 
@@ -431,9 +436,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(25, 123);
+            this.button2.Location = new System.Drawing.Point(25, 159);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 70);
+            this.button2.Size = new System.Drawing.Size(120, 38);
             this.button2.TabIndex = 51;
             this.button2.Text = "💰 Buy";
             this.button2.UseVisualStyleBackColor = true;
@@ -450,9 +455,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(25, 30);
+            this.button1.Location = new System.Drawing.Point(25, 27);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 43);
+            this.button1.Size = new System.Drawing.Size(120, 38);
             this.button1.TabIndex = 35;
             this.button1.Text = "📊 Change quantity ";
             this.button1.UseVisualStyleBackColor = true;
@@ -537,7 +542,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(25, 79);
+            this.button4.Location = new System.Drawing.Point(25, 71);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(120, 38);
             this.button4.TabIndex = 36;
@@ -631,6 +636,16 @@
             this.current_password.TabIndex = 7;
             this.current_password.UseSystemPasswordChar = true;
             // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(25, 115);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(120, 38);
+            this.button3.TabIndex = 54;
+            this.button3.Text = "💵 Total Price";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // MiracleLandMainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -711,5 +726,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity2;
         private System.Windows.Forms.DataGridViewTextBoxColumn info2;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button3;
     }
 }

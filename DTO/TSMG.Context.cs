@@ -25,7 +25,9 @@ namespace DTO
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<user_account> user_account { get; set; }
+        public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<order_detail> order_detail { get; set; }
         public virtual DbSet<product> products { get; set; }
+        public virtual DbSet<user_account> user_account { get; set; }
     }
 }

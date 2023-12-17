@@ -14,12 +14,21 @@ namespace DTO
     
     public partial class user_account
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user_account()
+        {
+            this.orders = new HashSet<order>();
+        }
+    
         public int id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public string type { get; set; }
         public string email { get; set; }
-        public string address { get; set; }
         public string phone { get; set; }
+        public string address { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order> orders { get; set; }
     }
 }

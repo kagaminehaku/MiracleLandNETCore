@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUSLogin.cs" />
+    <Compile Include="BUSorderdetail.cs" />
+    <Compile Include="BUSorders.cs" />
     <Compile Include="BUSproduct.cs" />
     <Compile Include="BUSPWDHashing.cs" />
     <Compile Include="BUSuser_account.cs" />

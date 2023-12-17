@@ -294,6 +294,16 @@ namespace MiracleLandNETFW
             }
         }
 
+        private void CartClear()
+        {
+            cart_id.Clear();
+            cart_name.Clear();  
+            cart_price.Clear(); 
+            cart_quantity.Clear();
+            cart_info.Clear();
+            pictureBox2.ImageLocation = null;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
 

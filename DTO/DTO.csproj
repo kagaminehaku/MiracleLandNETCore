@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="order.cs">
+      <DependentUpon>TSMG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="order_detail.cs">
+      <DependentUpon>TSMG.tt</DependentUpon>
+    </Compile>
     <Compile Include="product.cs">
       <DependentUpon>TSMG.tt</DependentUpon>
     </Compile>

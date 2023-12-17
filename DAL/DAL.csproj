@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALorderdetail.cs" />
+    <Compile Include="DALorders.cs" />
     <Compile Include="DALproduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DALuser_account.cs" />

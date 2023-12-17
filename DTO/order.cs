@@ -12,22 +12,20 @@ namespace DTO
     using System;
     using System.Collections.Generic;
     
-    public partial class product
+    public partial class order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public product()
+        public order()
         {
             this.order_detail = new HashSet<order_detail>();
         }
     
-        public int pid { get; set; }
-        public string pname { get; set; }
-        public int pprice { get; set; }
-        public int pquantity { get; set; }
-        public string pinfo { get; set; }
-        public string pimg { get; set; }
+        public int orderid { get; set; }
+        public int userid { get; set; }
+        public int total { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_detail> order_detail { get; set; }
+        public virtual user_account user_account { get; set; }
     }
 }

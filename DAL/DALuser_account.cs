@@ -70,7 +70,7 @@ namespace DAL
             {
                 using (var dbContext = new TSMGEntities())
                 {
-                    var user = dbContext.user_account.Find(usn);
+                    var user = dbContext.user_account.FirstOrDefault(u => u.username == usn);
                     if (user == null) return false;
 
                     user.password = newPassword;

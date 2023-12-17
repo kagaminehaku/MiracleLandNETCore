@@ -54,13 +54,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.current_password = new System.Windows.Forms.TextBox();
+            this.n_password = new System.Windows.Forms.TextBox();
+            this.cn_password = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.change_password = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -309,13 +309,13 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.change_password);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.textBox3);
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.cn_password);
+            this.tabPage2.Controls.Add(this.n_password);
+            this.tabPage2.Controls.Add(this.current_password);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -324,29 +324,29 @@
             this.tabPage2.Text = "Account";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // current_password
             // 
-            this.textBox2.Location = new System.Drawing.Point(207, 107);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(303, 20);
-            this.textBox2.TabIndex = 0;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.current_password.Location = new System.Drawing.Point(207, 107);
+            this.current_password.Name = "current_password";
+            this.current_password.Size = new System.Drawing.Size(303, 20);
+            this.current_password.TabIndex = 0;
+            this.current_password.UseSystemPasswordChar = true;
             // 
-            // textBox3
+            // n_password
             // 
-            this.textBox3.Location = new System.Drawing.Point(207, 148);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(303, 20);
-            this.textBox3.TabIndex = 1;
-            this.textBox3.UseSystemPasswordChar = true;
+            this.n_password.Location = new System.Drawing.Point(207, 148);
+            this.n_password.Name = "n_password";
+            this.n_password.Size = new System.Drawing.Size(303, 20);
+            this.n_password.TabIndex = 1;
+            this.n_password.UseSystemPasswordChar = true;
             // 
-            // textBox4
+            // cn_password
             // 
-            this.textBox4.Location = new System.Drawing.Point(207, 191);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(303, 20);
-            this.textBox4.TabIndex = 2;
-            this.textBox4.UseSystemPasswordChar = true;
+            this.cn_password.Location = new System.Drawing.Point(207, 191);
+            this.cn_password.Name = "cn_password";
+            this.cn_password.Size = new System.Drawing.Size(303, 20);
+            this.cn_password.TabIndex = 2;
+            this.cn_password.UseSystemPasswordChar = true;
             // 
             // label6
             // 
@@ -375,14 +375,15 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "Confirm password";
             // 
-            // button1
+            // change_password
             // 
-            this.button1.Location = new System.Drawing.Point(283, 236);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 34);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Change password";
-            this.button1.UseVisualStyleBackColor = true;
+            this.change_password.Location = new System.Drawing.Point(283, 236);
+            this.change_password.Name = "change_password";
+            this.change_password.Size = new System.Drawing.Size(142, 34);
+            this.change_password.TabIndex = 6;
+            this.change_password.Text = "Change password";
+            this.change_password.UseVisualStyleBackColor = true;
+            this.change_password.Click += new System.EventHandler(this.change_password_Click);
             // 
             // MiracleLandAdminUI
             // 
@@ -431,12 +432,12 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox cn_password;
+        private System.Windows.Forms.TextBox n_password;
+        private System.Windows.Forms.TextBox current_password;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button change_password;
     }
 }

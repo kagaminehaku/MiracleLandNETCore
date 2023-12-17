@@ -14,11 +14,11 @@ namespace MiracleLandNETFW
 {
     public partial class MiracleLandAdminUI : Form
     {
-        private user_account loggedInUser;
+        private user_account session;
         public MiracleLandAdminUI(user_account user)
         {
             InitializeComponent();
-            loggedInUser = user;
+            session = user;
             LoadDataToDGV();
             ControlBox = false;
         }
@@ -26,7 +26,7 @@ namespace MiracleLandNETFW
         private void LoadDataToDGV()
         {
             DGV1.Rows.Clear();
-            BUSproduct busproduct = new BUSproduct();
+            var busproduct = new BUSproduct();
             List<product> products = busproduct.GetAllProduct();
             foreach (product product in products)
             {
@@ -36,7 +36,7 @@ namespace MiracleLandNETFW
 
         private void admin_add_Click(object sender, EventArgs e)
         {
-            AddNewProduct addNewProduct = new AddNewProduct();
+            var addNewProduct = new AddNewProduct();
             addNewProduct.FormClosed += (s, args) => this.Show();
             addNewProduct.FormClosed += (s, args) => LoadDataToDGV();
             addNewProduct.Show();
@@ -45,7 +45,7 @@ namespace MiracleLandNETFW
 
         private void admin_logout_Click(object sender, EventArgs e)
         {
-            loggedInUser = null;
+            session = null;
             this.Close();
         }
 
@@ -108,6 +108,42 @@ namespace MiracleLandNETFW
                 editproduct.FormClosed += (s, args) => LoadDataToDGV();
                 editproduct.Show();
                 this.Hide();
+            }
+        }
+
+        private void change_password_Click(object sender, EventArgs e)
+        {
+            if (n_password.Text != cn_password.Text || String.IsNullOrEmpty(n_password.Text) || String.IsNullOrEmpty(cn_password.Text))
+            {
+                MessageBox.Show("Please fill all field");
+                return;
+            }
+            var bususeraccount = new BUSuser_account();
+            if (bususeraccount.IsPasswordVaild(n_password.Text) == false)
+            {
+                MessageBox.Show("New password invaild,it must contain more than 8 characters");
+                return;
+            }
+            var buslogin = new BUSLogin();
+            var allowchangepwd = (buslogin.checkValidLogin(session.username.ToString(), current_password.Text));
+            if ( allowchangepwd !=null )
+            {
+                var bus2useraccount = new BUSuser_account();
+                if(bus2useraccount.UpdatePassword(session.username.ToString(), n_password.Text))
+                {
+                    MessageBox.Show("Password has been changed.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("An Unexpected Error Occurred.");
+                    return;
+                }
+            }
+            else if (allowchangepwd == null)
+            {
+                MessageBox.Show("Old password invaild !");
+                return;
             }
         }
     }

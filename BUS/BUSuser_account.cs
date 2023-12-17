@@ -2,6 +2,7 @@
 using DAL;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace BUS
 {
@@ -21,6 +22,13 @@ namespace BUS
             newpwd = BUSPWDHashing.EncryptData(newpwd);
             var daluseraccount = new DALuser_account();
             return daluseraccount.UpdatePassword(usn, newpwd);
+        }
+
+        public bool IsPasswordVaild(string password)
+        {
+            string pattern = @"^.{8,}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(password);
         }
     }
 }

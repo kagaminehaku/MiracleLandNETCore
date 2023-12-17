@@ -89,6 +89,26 @@ namespace DAL
             }
         }
 
+        public bool UpdateProductQuantity(int id, int newquantity)
+        {
+            try
+            {
+                using (var dbContext = new TSMGEntities())
+                {
+                    var product = dbContext.products.Find(id);
+                    if (product == null) return false;
+                    product.pquantity = newquantity;
+                    dbContext.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException.ToString());
+                return false;
+            }
+        }
+
         public bool RemoveProduct(int id)
         {
             try

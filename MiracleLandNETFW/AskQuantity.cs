@@ -18,6 +18,7 @@ namespace MiracleLandNETFW
         {
             InitializeComponent();
             maxvalue = max;
+            ControlBox = false;
         }
 
         private void button1_Click(object sender, EventArgs e)

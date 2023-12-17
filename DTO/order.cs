@@ -22,7 +22,7 @@ namespace DTO
     
         public int orderid { get; set; }
         public int userid { get; set; }
-        public int total { get; set; }
+        public long total { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_detail> order_detail { get; set; }

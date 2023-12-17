@@ -48,5 +48,12 @@ namespace BUS
             return dalproduct.GetProductByID(id);
         }
 
+        public void UpdateProductQuantity(int id, int minusquantity)
+        {
+            var dalproduct = new DALproduct();
+            var product = GetProduct(id);
+            int quantity = product.pquantity - minusquantity;
+            dalproduct.UpdateProductQuantity(id, quantity);
+        }
     }
 }

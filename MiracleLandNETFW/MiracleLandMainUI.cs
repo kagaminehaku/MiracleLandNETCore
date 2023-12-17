@@ -216,7 +216,7 @@ namespace MiracleLandNETFW
             string searchText = textBox3.Text.Trim();
             foreach (DataGridViewRow row in DGV2.Rows)
             {
-                string studentName = row.Cells["name"].Value.ToString();
+                string studentName = row.Cells["name2"].Value.ToString();
                 if (studentName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     row.Visible = true;
@@ -303,12 +303,13 @@ namespace MiracleLandNETFW
             cart_quantity.Clear();
             cart_info.Clear();
             pictureBox2.ImageLocation = null;
+            DGV2.Rows.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int total = 0;
-            if (DGV2 == null)
+            long total = 0;
+            if (DGV2.RowCount == 0)
             {
                 MessageBox.Show("Please add something to cart");
                 return;
@@ -324,6 +325,26 @@ namespace MiracleLandNETFW
                     }
                 }
             }
+            var busorders = new BUSorders();
+            string oid = busorders.AddNewOrders(session.id, total);
+            foreach (DataGridViewRow row in DGV2.Rows)
+            {
+                if (int.TryParse(row.Cells["id2"].Value.ToString(), out int pid) &&
+                        int.TryParse(row.Cells["quantity2"].Value.ToString(), out int quantity))
+                {
+                    var busproduct = new BUSproduct();
+                    busproduct.UpdateProductQuantity(pid, quantity);
+                    var busorderdetail = new BUSorderdetail();
+                    bool isok = busorderdetail.AddNewOrderDetail(int.Parse(oid), pid, quantity);
+                    if (isok == false)
+                    {
+                        MessageBox.Show("Something wrong");
+                    }
+                }
+            }
+            MessageBox.Show("Thank you for your order! Please pay " + total + "VND when your package arrives.");
+            CartClear();
+            LoadDataToDGV();
         }
 
         private void DGV2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -343,7 +364,7 @@ namespace MiracleLandNETFW
 
         private void UpdateTotalPrice()
         {
-            int total = 0;
+            long total = 0;
             if (DGV2 == null)
             {
                 return;

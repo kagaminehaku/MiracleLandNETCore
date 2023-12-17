@@ -9,9 +9,9 @@
           <Key>
             <PropertyRef Name="orderid" />
           </Key>
-          <Property Name="orderid" Type="int" Nullable="false" />
+          <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userid" Type="int" Nullable="false" />
-          <Property Name="total" Type="int" Nullable="false" />
+          <Property Name="total" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="order_detail">
           <Key>
@@ -127,7 +127,7 @@
           </Key>
           <Property Name="orderid" Type="Int32" Nullable="false" />
           <Property Name="userid" Type="Int32" Nullable="false" />
-          <Property Name="total" Type="Int32" Nullable="false" />
+          <Property Name="total" Type="Int64" Nullable="false" />
           <NavigationProperty Name="order_detail" Relationship="TSMGModel.FK_order_detail_order1" FromRole="order" ToRole="order_detail" />
           <NavigationProperty Name="user_account" Relationship="TSMGModel.FK_order_user_account1" FromRole="order" ToRole="user_account" />
         </EntityType>

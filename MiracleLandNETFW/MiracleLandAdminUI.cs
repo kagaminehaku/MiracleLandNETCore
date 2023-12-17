@@ -45,6 +45,11 @@ namespace MiracleLandNETFW
 
         private void admin_logout_Click(object sender, EventArgs e)
         {
+            LogOut();
+        }
+
+        private void LogOut()
+        {
             session = null;
             this.Close();
         }
@@ -131,8 +136,9 @@ namespace MiracleLandNETFW
                 var bus2useraccount = new BUSuser_account();
                 if(bus2useraccount.UpdatePassword(session.username.ToString(), n_password.Text))
                 {
-                    MessageBox.Show("Password has been changed.");
-                    return;
+                    MessageBox.Show("Password has been changed,session timeout.");
+                    session = null;
+                    this.Close();
                 }
                 else
                 {

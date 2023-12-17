@@ -66,6 +66,7 @@ namespace MiracleLandNETFW
             if (result == username)
             {
                 MessageBox.Show("Registration successful.");
+                this.Close();
             }
             else if (result == "Duplicate")
             {

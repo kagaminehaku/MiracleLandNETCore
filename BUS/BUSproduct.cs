@@ -48,6 +48,5 @@ namespace BUS
             return dalproduct.GetProductByID(id);
         }
 
-
     }
 }

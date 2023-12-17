@@ -152,5 +152,22 @@ namespace MiracleLandNETFW
                 return;
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBox1.Text.Trim();
+            foreach (DataGridViewRow row in DGV1.Rows)
+            {
+                string studentName = row.Cells["name"].Value.ToString();
+                if (studentName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    row.Visible = false;
+                }
+            }
+        }
     }
 }

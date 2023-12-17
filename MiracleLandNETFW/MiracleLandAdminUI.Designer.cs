@@ -54,13 +54,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.current_password = new System.Windows.Forms.TextBox();
-            this.n_password = new System.Windows.Forms.TextBox();
-            this.cn_password = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.change_password = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cn_password = new System.Windows.Forms.TextBox();
+            this.n_password = new System.Windows.Forms.TextBox();
+            this.current_password = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -164,7 +164,7 @@
             this.admin_logout.Name = "admin_logout";
             this.admin_logout.Size = new System.Drawing.Size(103, 34);
             this.admin_logout.TabIndex = 4;
-            this.admin_logout.Text = "🔓Logout";
+            this.admin_logout.Text = "🔓 Logout";
             this.admin_logout.UseVisualStyleBackColor = true;
             this.admin_logout.Click += new System.EventHandler(this.admin_logout_Click);
             // 
@@ -174,6 +174,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(705, 20);
             this.textBox1.TabIndex = 5;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // pictureBox1
             // 
@@ -324,47 +325,15 @@
             this.tabPage2.Text = "Account";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // current_password
+            // change_password
             // 
-            this.current_password.Location = new System.Drawing.Point(207, 107);
-            this.current_password.Name = "current_password";
-            this.current_password.Size = new System.Drawing.Size(303, 20);
-            this.current_password.TabIndex = 0;
-            this.current_password.UseSystemPasswordChar = true;
-            // 
-            // n_password
-            // 
-            this.n_password.Location = new System.Drawing.Point(207, 148);
-            this.n_password.Name = "n_password";
-            this.n_password.Size = new System.Drawing.Size(303, 20);
-            this.n_password.TabIndex = 1;
-            this.n_password.UseSystemPasswordChar = true;
-            // 
-            // cn_password
-            // 
-            this.cn_password.Location = new System.Drawing.Point(207, 191);
-            this.cn_password.Name = "cn_password";
-            this.cn_password.Size = new System.Drawing.Size(303, 20);
-            this.cn_password.TabIndex = 2;
-            this.cn_password.UseSystemPasswordChar = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(111, 110);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Current password";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(111, 151);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "New password";
+            this.change_password.Location = new System.Drawing.Point(283, 236);
+            this.change_password.Name = "change_password";
+            this.change_password.Size = new System.Drawing.Size(142, 34);
+            this.change_password.TabIndex = 6;
+            this.change_password.Text = "Change password";
+            this.change_password.UseVisualStyleBackColor = true;
+            this.change_password.Click += new System.EventHandler(this.change_password_Click);
             // 
             // label8
             // 
@@ -375,15 +344,47 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "Confirm password";
             // 
-            // change_password
+            // label7
             // 
-            this.change_password.Location = new System.Drawing.Point(283, 236);
-            this.change_password.Name = "change_password";
-            this.change_password.Size = new System.Drawing.Size(142, 34);
-            this.change_password.TabIndex = 6;
-            this.change_password.Text = "Change password";
-            this.change_password.UseVisualStyleBackColor = true;
-            this.change_password.Click += new System.EventHandler(this.change_password_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(111, 151);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "New password";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(111, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Current password";
+            // 
+            // cn_password
+            // 
+            this.cn_password.Location = new System.Drawing.Point(207, 191);
+            this.cn_password.Name = "cn_password";
+            this.cn_password.Size = new System.Drawing.Size(303, 20);
+            this.cn_password.TabIndex = 2;
+            this.cn_password.UseSystemPasswordChar = true;
+            // 
+            // n_password
+            // 
+            this.n_password.Location = new System.Drawing.Point(207, 148);
+            this.n_password.Name = "n_password";
+            this.n_password.Size = new System.Drawing.Size(303, 20);
+            this.n_password.TabIndex = 1;
+            this.n_password.UseSystemPasswordChar = true;
+            // 
+            // current_password
+            // 
+            this.current_password.Location = new System.Drawing.Point(207, 107);
+            this.current_password.Name = "current_password";
+            this.current_password.Size = new System.Drawing.Size(303, 20);
+            this.current_password.TabIndex = 0;
+            this.current_password.UseSystemPasswordChar = true;
             // 
             // MiracleLandAdminUI
             // 

@@ -17,8 +17,7 @@ namespace MiracleLandNETFW
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            user_account user = null;
-            Application.Run(new MiracleLandMainUI(user));
+            Application.Run(new Login());
         }
     }
 }

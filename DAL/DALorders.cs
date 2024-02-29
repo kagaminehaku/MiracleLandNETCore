@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DTO;
+using DTOCore;
 
 namespace DAL
 {
@@ -14,17 +14,17 @@ namespace DAL
         {
             try
             {
-                using (var dbContext = new TSMGEntities())
+                using (var dbContext = new TsmgContext())
                 {
-                    var orders = new order
+                    var orders = new Order
                     {
-                        userid = userid, 
-                        total = total
+                        Userid = userid, 
+                        Total = total
                     };
 
-                    dbContext.orders.Add(orders);
+                    dbContext.Orders.Add(orders);
                     dbContext.SaveChanges();
-                    return orders.orderid.ToString();
+                    return orders.Orderid.ToString();
                 }
             }
             catch (Exception ex)

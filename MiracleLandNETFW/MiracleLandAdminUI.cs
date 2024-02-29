@@ -1,5 +1,5 @@
 ﻿using BUS;
-using DTO;
+using DTOCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +14,8 @@ namespace MiracleLandNETFW
 {
     public partial class MiracleLandAdminUI : Form
     {
-        private user_account session;
-        public MiracleLandAdminUI(user_account user)
+        private UserAccount session;
+        public MiracleLandAdminUI(UserAccount user)
         {
             InitializeComponent();
             session = user;
@@ -27,10 +27,10 @@ namespace MiracleLandNETFW
         {
             DGV1.Rows.Clear();
             var busproduct = new BUSproduct();
-            List<product> products = busproduct.GetAllProduct();
-            foreach (product product in products)
+            List<Product> products = busproduct.GetAllProduct();
+            foreach (Product product in products)
             {
-                DGV1.Rows.Add(product.pid, product.pname, product.pprice, product.pquantity, product.pinfo);
+                DGV1.Rows.Add(product.Pid, product.Pname, product.Pprice, product.Pquantity, product.Pinfo);
             }
         }
 
@@ -70,12 +70,12 @@ namespace MiracleLandNETFW
             int id = (int)DGV1.SelectedRows[0].Cells["Id"].Value;
             var busproduct = new BUSproduct();
             var product = busproduct.GetProduct(id);
-            admin_pid.Text = product.pid.ToString();
-            pname.Text = product.pname;
-            pprice.Text = product.pprice.ToString();
-            pquantity.Text = product.pquantity.ToString();
-            pinfo.Text = product.pinfo;
-            pictureBox1.ImageLocation = product.pimg;
+            admin_pid.Text = product.Pid.ToString();
+            pname.Text = product.Pname;
+            pprice.Text = product.Pprice.ToString();
+            pquantity.Text = product.Pquantity.ToString();
+            pinfo.Text = product.Pinfo;
+            pictureBox1.ImageLocation = product.Pimg;
 
         }
 
@@ -131,11 +131,11 @@ namespace MiracleLandNETFW
                 return;
             }
             var buslogin = new BUSLogin();
-            var allowchangepwd = (buslogin.checkValidLogin(session.username.ToString(), current_password.Text));
+            var allowchangepwd = (buslogin.checkValidLogin(session.Username.ToString(), current_password.Text));
             if ( allowchangepwd !=null )
             {
                 var bus2useraccount = new BUSuser_account();
-                if(bus2useraccount.UpdatePassword(session.username.ToString(), n_password.Text))
+                if(bus2useraccount.UpdatePassword(session.Username.ToString(), n_password.Text))
                 {
                     MessageBox.Show("Password has been changed,session timeout.");
                     session = null;

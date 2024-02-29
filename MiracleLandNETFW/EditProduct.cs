@@ -1,5 +1,5 @@
 ﻿using BUS;
-using DTO;
+using DTOCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,11 +70,11 @@ namespace MiracleLandNETFW
         {
             var busproduct = new BUSproduct();
             var product = busproduct.GetProduct(eid);
-            edit_name.Text = product.pname;
-            edit_price.Text = product.pprice.ToString();
-            edit_quantity.Text = product.pquantity.ToString();
-            edit_info.Text = product.pinfo;
-            pictureBox1.ImageLocation = product.pimg;
+            edit_name.Text = product.Pname;
+            edit_price.Text = product.Pprice.ToString();
+            edit_quantity.Text = product.Pquantity.ToString();
+            edit_info.Text = product.Pinfo;
+            pictureBox1.ImageLocation = product.Pimg;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

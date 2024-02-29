@@ -1,4 +1,4 @@
-﻿using DTO;
+﻿using DTOCore;
 using DAL;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace BUS
 {
     public class BUSproduct
     {
-        public List<product> GetAllProduct()
+        public List<Product> GetAllProduct()
         {
             var dalproduct = new DALproduct();
             return dalproduct.GetAllProduct();
@@ -42,7 +42,7 @@ namespace BUS
             File.Delete(imagepath);
         }
 
-        public product GetProduct(int id) 
+        public Product GetProduct(int id) 
         {
             var dalproduct = new DALproduct();
             return dalproduct.GetProductByID(id);
@@ -52,7 +52,7 @@ namespace BUS
         {
             var dalproduct = new DALproduct();
             var product = GetProduct(id);
-            int quantity = product.pquantity - minusquantity;
+            int quantity = product.Pquantity - minusquantity;
             dalproduct.UpdateProductQuantity(id, quantity);
         }
     }

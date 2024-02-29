@@ -5,27 +5,27 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
-
+using DTOCore;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DAL
 {
     public class DALuser_account
     {
-        public List<user_account> GetAllUser()
+        public List<UserAccount> GetAllUser()
         {
-            using (var dbContext = new TSMGEntities()) 
+            using (var dbContext = new TsmgContext()) 
             {
-                return dbContext.user_account.AsNoTracking().ToList();
+                return dbContext.UserAccounts.AsNoTracking().ToList();
             }
         }
 
-        public user_account GetUserByUsername(string usn)
+        public UserAccount GetUserByUsername(string usn)
         {
-            using (var dbContext = new TSMGEntities())
+            using (var dbContext = new TsmgContext())
             {
-                return dbContext.user_account.FirstOrDefault(u => u.username == usn);
+                return dbContext.UserAccounts.FirstOrDefault(u => u.Username == usn);
             }
         }
 
@@ -34,7 +34,7 @@ namespace DAL
 
             try
             {
-                using (var dbContext = new TSMGEntities())
+                using (var dbContext = new TsmgContext())
                 {
                     var existingUser = GetUserByUsername(usn);
                     if (existingUser != null)
@@ -42,19 +42,19 @@ namespace DAL
                         return "Duplicate";
                     }
 
-                    var user = new user_account
+                    var user = new UserAccount
                     {
-                        username = usn,
-                        password = pwd,
-                        type = tp,
-                        email = em,
-                        phone = pe,
-                        address = add,
+                        Username = usn,
+                        Password = pwd,
+                        Type = tp,
+                        Email = em,
+                        Phone = pe,
+                        Address = add,
                     };
 
-                    dbContext.user_account.Add(user);
+                    dbContext.UserAccounts.Add(user);
                     dbContext.SaveChanges();
-                    return user.username;
+                    return user.Username;
                 }
             }
             catch (Exception ex)
@@ -68,12 +68,12 @@ namespace DAL
         {
             try
             {
-                using (var dbContext = new TSMGEntities())
+                using (var dbContext = new TsmgContext())
                 {
-                    var user = dbContext.user_account.FirstOrDefault(u => u.username == usn);
+                    var user = dbContext.UserAccounts.FirstOrDefault(u => u.Username == usn);
                     if (user == null) return false;
 
-                    user.password = newPassword;
+                    user.Password = newPassword;
 
                     dbContext.SaveChanges();
                     return true;

@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using DAL;
-using DTO;
+using DTOCore;
 
 namespace BUS
 {
     public class BUSLogin
     {
-        public user_account checkValidLogin(string usrname, string usrpwd)
+        public UserAccount checkValidLogin(string usrname, string usrpwd)
         {
             var dalUserAccount = new DALuser_account();
-            List<user_account> found = dalUserAccount.GetAllUser();
+            List<UserAccount> found = dalUserAccount.GetAllUser();
             usrpwd = BUSPWDHashing.EncryptData(usrpwd);
 
             foreach (var user in found)
             {
-                if (user.username == usrname && user.password == usrpwd)
+                if (user.Username == usrname && user.Password == usrpwd)
                 {
                     return user;
                 }

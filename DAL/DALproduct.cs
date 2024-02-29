@@ -1,35 +1,36 @@
-﻿using DTO;
+﻿using DTOCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL
 {
     public class DALproduct
     {
-        public List<product> GetAllProduct()
+        public List<Product> GetAllProduct()
         {
-            using (var dbContext = new TSMGEntities())
+            using (var dbContext = new TsmgContext())
             {
-                return dbContext.products.AsNoTracking().ToList();
+                return dbContext.Products.AsNoTracking().ToList();
             }
         }
 
-        public product GetProductByID(int pid)
+        public Product GetProductByID(int pid)
         {
-            using (var dbContext = new TSMGEntities())
+            using (var dbContext = new TsmgContext())
             {
-                return dbContext.products.FirstOrDefault(u => u.pid == pid);
+                return dbContext.Products.FirstOrDefault(u => u.Pid == pid);
             }
         }
 
-        public product GetProductByName(string pname)
+        public Product GetProductByName(string pname)
         {
-            using (var dbContext = new TSMGEntities())
+            using (var dbContext = new TsmgContext())
             {
-                return dbContext.products.FirstOrDefault(u => u.pname == pname);
+                return dbContext.Products.FirstOrDefault(u => u.Pname == pname);
             }
         }
 
@@ -37,7 +38,7 @@ namespace DAL
         {
             try
             {
-                using (var dbContext = new TSMGEntities())
+                using (var dbContext = new TsmgContext())
                 {
                     var existingProduct = GetProductByName(pname);
                     if (existingProduct != null)
@@ -45,18 +46,18 @@ namespace DAL
                         return "Product name is Duplicate";
                     }
 
-                    var product = new product
+                    var product = new Product
                     {
-                        pname = pname,
-                        pprice = pprice,
-                        pquantity = pquantity,
-                        pinfo = pinfo,
-                        pimg = pimg
+                        Pname = pname,
+                        Pprice = pprice,
+                        Pquantity = pquantity,
+                        Pinfo = pinfo,
+                        Pimg = pimg
                     };
 
-                    dbContext.products.Add(product);
+                    dbContext.Products.Add(product);
                     dbContext.SaveChanges();
-                    return product.pname;
+                    return product.Pname;
                 }
             }
             catch (Exception ex)
@@ -69,15 +70,15 @@ namespace DAL
         {
             try
             {
-                using (var dbContext = new TSMGEntities())
+                using (var dbContext = new TsmgContext())
                 {
-                    var product = dbContext.products.Find(id);
+                    var product = dbContext.Products.Find(id);
                     if (product == null) return false;
-                    product.pname = newpname; 
-                    product.pprice = newpprice;
-                    product.pquantity = newquantity;
-                    product.pinfo = newpinfo;
-                    product.pimg = pimg;
+                    product.Pname = newpname; 
+                    product.Pprice = newpprice;
+                    product.Pquantity = newquantity;
+                    product.Pinfo = newpinfo;
+                    product.Pimg = pimg;
                     dbContext.SaveChanges();
                     return true;
                 }
@@ -93,11 +94,11 @@ namespace DAL
         {
             try
             {
-                using (var dbContext = new TSMGEntities())
+                using (var dbContext = new TsmgContext())
                 {
-                    var product = dbContext.products.Find(id);
+                    var product = dbContext.Products.Find(id);
                     if (product == null) return false;
-                    product.pquantity = newquantity;
+                    product.Pquantity = newquantity;
                     dbContext.SaveChanges();
                     return true;
                 }
@@ -113,11 +114,11 @@ namespace DAL
         {
             try
             {
-                using (var dbContext = new TSMGEntities())
+                using (var dbContext = new TsmgContext())
                 {
-                    var product = dbContext.products.Find(id);
+                    var product = dbContext.Products.Find(id);
                     if (product == null) return false;
-                    dbContext.products.Remove(product);
+                    dbContext.Products.Remove(product);
                     dbContext.SaveChanges();
                     return true;
                 }

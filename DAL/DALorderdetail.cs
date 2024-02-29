@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
+using DTOCore;
 
 namespace DAL
 {
@@ -13,16 +13,16 @@ namespace DAL
         {
             try
             {
-                using (var dbContext = new TSMGEntities())
+                using (var dbContext = new TsmgContext())
                 {
-                    var orders_detail = new order_detail
+                    var orders_detail = new OrderDetail
                     {
-                        orderid = orderid,
-                        pid = pid, 
-                        quantity = quantity
+                        Orderid = orderid,
+                        Pid = pid, 
+                        Quantity = quantity
                     };
 
-                    dbContext.order_detail.Add(orders_detail);
+                    dbContext.OrderDetails.Add(orders_detail);
                     dbContext.SaveChanges();
                     return true;
                 }

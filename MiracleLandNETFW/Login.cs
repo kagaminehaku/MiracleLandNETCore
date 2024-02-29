@@ -1,5 +1,5 @@
 ﻿using BUS;
-using DTO;
+using DTOCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,18 +34,18 @@ namespace MiracleLandNETFW
             string userpwd = login_password.Text;
             var bLogin = new BUSLogin();
 
-            user_account user = bLogin.checkValidLogin(username, userpwd);
+            UserAccount user = bLogin.checkValidLogin(username, userpwd);
 
             ResetLoginData();
             if (user == null)
             {
                 MessageBox.Show("Invail username or password.", "Error !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (user.type == "admin")
+            else if (user.Type == "admin")
             {
                 AdminBehavior(user);
             }
-            else if (user.type == "Normal")
+            else if (user.Type == "Normal")
             {
                 CustomerBehavior(user);
             }
@@ -57,25 +57,25 @@ namespace MiracleLandNETFW
             register.ShowDialog();
         }
 
-        private void AdminBehavior(user_account user)
+        private void AdminBehavior(UserAccount user)
         {
-            MessageBox.Show($"Welcome {user.username}!", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Welcome {user.Username}!", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
             var miracleLandAdminUI = new MiracleLandAdminUI(user);
             miracleLandAdminUI.FormClosed += (s, args) => this.Show();
             miracleLandAdminUI.Show();
             this.Hide();
         }
 
-        private void CustomerBehavior(user_account user)
+        private void CustomerBehavior(UserAccount user)
         {
-            MessageBox.Show($"Welcome {user.username}!", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Welcome {user.Username}!", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
             var miracleLandMainUI = new MiracleLandMainUI(user);
             miracleLandMainUI.FormClosed += (s, args) => this.Show();
             miracleLandMainUI.Show();
             this.Hide();
         }
 
-        private void GuestBehavior(user_account user)
+        private void GuestBehavior(UserAccount user)
         {
             var miracleLandMainUI = new MiracleLandMainUI(null);
             miracleLandMainUI.FormClosed += (s, args) => this.Show();

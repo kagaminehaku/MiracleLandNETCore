@@ -12,13 +12,14 @@ using System.Windows.Forms;
 using System.Net.NetworkInformation;
 using System.Windows.Controls;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using DTOCore;
 
 namespace MiracleLandNETFW
 {
     public partial class MiracleLandMainUI : Form
     {
-        private user_account session;
-        public MiracleLandMainUI(user_account user)
+        private UserAccount session;
+        public MiracleLandMainUI(UserAccount user)
         {
             InitializeComponent();
             session = user;
@@ -38,10 +39,10 @@ namespace MiracleLandNETFW
         {
             DGV1.Rows.Clear();
             var busproduct = new BUSproduct();
-            List<product> products = busproduct.GetAllProduct();
-            foreach (product product in products)
+            List<Product> products = busproduct.GetAllProduct();
+            foreach (Product product in products)
             {
-                DGV1.Rows.Add(product.pid, product.pname, product.pprice, product.pquantity, product.pinfo);
+                DGV1.Rows.Add(product.Pid, product.Pname, product.Pprice, product.Pquantity, product.Pinfo);
             }
         }
 
@@ -56,7 +57,7 @@ namespace MiracleLandNETFW
         private void InitForSession()
         {
             mainui_login.Enabled = false;
-            mainui_login.Text = "Current user: " +session.username;
+            mainui_login.Text = "Current user: " +session.Username;
         }
 
         private void mainui_login_Click(object sender, EventArgs e)
@@ -189,12 +190,12 @@ namespace MiracleLandNETFW
             int id = (int)DGV2.SelectedRows[0].Cells["id2"].Value;
             var busproduct = new BUSproduct();
             var product = busproduct.GetProduct(id);
-            cart_id.Text = product.pid.ToString();
-            cart_name.Text = product.pname;
-            cart_price.Text = product.pprice.ToString();
+            cart_id.Text = product.Pid.ToString();
+            cart_name.Text = product.Pname;
+            cart_price.Text = product.Pprice.ToString();
             cart_quantity.Text = DGV2.SelectedRows[0].Cells["quantity2"].Value.ToString();
-            cart_info.Text = product.pinfo;
-            pictureBox2.ImageLocation = product.pimg;
+            cart_info.Text = product.Pinfo;
+            pictureBox2.ImageLocation = product.Pimg;
 
         }
 
@@ -203,12 +204,12 @@ namespace MiracleLandNETFW
             int id = (int)DGV1.SelectedRows[0].Cells["Id"].Value;
             var busproduct = new BUSproduct();
             var product = busproduct.GetProduct(id);
-            user_pid.Text = product.pid.ToString();
-            user_pname.Text = product.pname;
-            user_pprice.Text = product.pprice.ToString();
-            user_pquantity.Text = product.pquantity.ToString();
-            user_pinfo.Text = product.pinfo;
-            pictureBox1.ImageLocation = product.pimg;
+            user_pid.Text = product.Pid.ToString();
+            user_pname.Text = product.Pname;
+            user_pprice.Text = product.Pprice.ToString();
+            user_pquantity.Text = product.Pquantity.ToString();
+            user_pinfo.Text = product.Pinfo;
+            pictureBox1.ImageLocation = product.Pimg;
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -242,11 +243,11 @@ namespace MiracleLandNETFW
                 return;
             }
             var buslogin = new BUSLogin();
-            var allowchangepwd = (buslogin.checkValidLogin(session.username.ToString(), current_password.Text));
+            var allowchangepwd = (buslogin.checkValidLogin(session.Username.ToString(), current_password.Text));
             if (allowchangepwd != null)
             {
                 var bus2useraccount = new BUSuser_account();
-                if (bus2useraccount.UpdatePassword(session.username.ToString(), n_password.Text))
+                if (bus2useraccount.UpdatePassword(session.Username.ToString(), n_password.Text))
                 {
                     MessageBox.Show("Password has been changed,session timeout.");
                     session = null;
@@ -326,7 +327,7 @@ namespace MiracleLandNETFW
                 }
             }
             var busorders = new BUSorders();
-            string oid = busorders.AddNewOrders(session.id, total);
+            string oid = busorders.AddNewOrders(session.Id, total);
             foreach (DataGridViewRow row in DGV2.Rows)
             {
                 if (int.TryParse(row.Cells["id2"].Value.ToString(), out int pid) &&

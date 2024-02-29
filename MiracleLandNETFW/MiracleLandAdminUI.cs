@@ -76,6 +76,7 @@ namespace MiracleLandNETFW
             pquantity.Text = product.pquantity.ToString();
             pinfo.Text = product.pinfo;
             pictureBox1.ImageLocation = product.pimg;
+
         }
 
         private void admin_delete_Click(object sender, EventArgs e)

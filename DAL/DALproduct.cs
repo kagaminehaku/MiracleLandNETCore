@@ -1,10 +1,8 @@
 ﻿using DTOCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace DAL
 {
@@ -74,7 +72,7 @@ namespace DAL
                 {
                     var product = dbContext.Products.Find(id);
                     if (product == null) return false;
-                    product.Pname = newpname; 
+                    product.Pname = newpname;
                     product.Pprice = newpprice;
                     product.Pquantity = newquantity;
                     product.Pinfo = newpinfo;

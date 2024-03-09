@@ -1,15 +1,6 @@
 ﻿using BUS;
-using DTOCore;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MiracleLandNETFW
@@ -43,11 +34,11 @@ namespace MiracleLandNETFW
             var busproduct = new BUSproduct();
             if (int.TryParse(edit_price.Text, out int price) && int.TryParse(edit_quantity.Text, out int quantity))
             {
-                bool editstate = busproduct.EditProduct(eid,edit_name.Text, price, quantity, edit_info.Text, imagePath);
+                bool editstate = busproduct.EditProduct(eid, edit_name.Text, price, quantity, edit_info.Text, imagePath);
                 if (editstate)
                 {
                     MessageBox.Show($"{edit_name.Text}" + "Edit", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    if(currentimagepath != imagePath)
+                    if (currentimagepath != imagePath)
                     {
                         busproduct.RemoveImage(currentimagepath);
                     }
@@ -125,4 +116,3 @@ namespace MiracleLandNETFW
         }
     }
 }
-                

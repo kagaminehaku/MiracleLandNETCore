@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
-using DTOCore;
+﻿using DTOCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace DAL
@@ -15,7 +11,7 @@ namespace DAL
     {
         public List<UserAccount> GetAllUser()
         {
-            using (var dbContext = new TsmgContext()) 
+            using (var dbContext = new TsmgContext())
             {
                 return dbContext.UserAccounts.AsNoTracking().ToList();
             }
@@ -60,7 +56,7 @@ namespace DAL
             catch (Exception ex)
             {
                 Console.WriteLine(ex.InnerException.ToString());
-                return "An error occurred: " + ex.Message; 
+                return "An error occurred: " + ex.Message;
             }
         }
 

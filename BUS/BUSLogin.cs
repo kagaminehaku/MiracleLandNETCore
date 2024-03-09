@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using DAL;
+﻿using DAL;
 using DTOCore;
+using System.Collections.Generic;
 
 namespace BUS
 {
@@ -21,7 +20,7 @@ namespace BUS
                 }
 
             }
-            return null; 
+            return null;
         }
 
     }

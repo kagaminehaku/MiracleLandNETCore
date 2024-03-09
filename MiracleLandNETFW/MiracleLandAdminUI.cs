@@ -2,12 +2,6 @@
 using DTOCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MiracleLandNETFW
@@ -90,7 +84,7 @@ namespace MiracleLandNETFW
             {
                 var busproduct = new BUSproduct();
                 string imagepath = pictureBox1.ImageLocation;
-                if (busproduct.RemoveProduct(productid,imagepath))
+                if (busproduct.RemoveProduct(productid, imagepath))
                 {
                     MessageBox.Show("Product delete sucessfully");
                     ShowDataReset();
@@ -132,10 +126,10 @@ namespace MiracleLandNETFW
             }
             var buslogin = new BUSLogin();
             var allowchangepwd = (buslogin.checkValidLogin(session.Username.ToString(), current_password.Text));
-            if ( allowchangepwd !=null )
+            if (allowchangepwd != null)
             {
                 var bus2useraccount = new BUSuser_account();
-                if(bus2useraccount.UpdatePassword(session.Username.ToString(), n_password.Text))
+                if (bus2useraccount.UpdatePassword(session.Username.ToString(), n_password.Text))
                 {
                     MessageBox.Show("Password has been changed,session timeout.");
                     session = null;

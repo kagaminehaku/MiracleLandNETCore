@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DTO;
-using DAL;
+﻿using DAL;
 
 namespace BUS
 {
@@ -13,7 +7,7 @@ namespace BUS
         public string AddNewOrders(int userid, long total)
         {
             var dalorders = new DALorders();
-            string oid = dalorders.AddOrders(userid,total);
+            string oid = dalorders.AddOrders(userid, total);
             return oid;
         }
     }

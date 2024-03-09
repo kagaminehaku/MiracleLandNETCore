@@ -1,10 +1,6 @@
-﻿using DTOCore;
-using DAL;
-using System;
+﻿using DAL;
+using DTOCore;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace BUS
@@ -20,7 +16,7 @@ namespace BUS
         public string AddNewProduct(string newpname, int newpprice, int newpquantity, string newpinfo, string newpimg)
         {
             var dalproduct = new DALproduct();
-            string productname = dalproduct.AddNewProduct( newpname, newpprice, newpquantity, newpinfo, newpimg);
+            string productname = dalproduct.AddNewProduct(newpname, newpprice, newpquantity, newpinfo, newpimg);
             return productname;
         }
 
@@ -30,7 +26,7 @@ namespace BUS
             return dalproduct.UpdateProduct(id, newpname, newpprice, newpquantity, newpinfo, newpimg);
         }
 
-        public bool RemoveProduct(int id,string imagepath)
+        public bool RemoveProduct(int id, string imagepath)
         {
             File.Delete(imagepath);
             var dalproduct = new DALproduct();
@@ -42,7 +38,7 @@ namespace BUS
             File.Delete(imagepath);
         }
 
-        public Product GetProduct(int id) 
+        public Product GetProduct(int id)
         {
             var dalproduct = new DALproduct();
             return dalproduct.GetProductByID(id);

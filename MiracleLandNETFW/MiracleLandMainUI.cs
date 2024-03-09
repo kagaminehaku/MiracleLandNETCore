@@ -1,18 +1,8 @@
-﻿using DTO;
-using BUS;
+﻿using BUS;
+using DTOCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.NetworkInformation;
-using System.Windows.Controls;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using DTOCore;
 
 namespace MiracleLandNETFW
 {
@@ -30,7 +20,7 @@ namespace MiracleLandNETFW
             }
             else if (session != null)
             {
-                InitForSession(); 
+                InitForSession();
             }
 
         }
@@ -57,12 +47,12 @@ namespace MiracleLandNETFW
         private void InitForSession()
         {
             mainui_login.Enabled = false;
-            mainui_login.Text = "Current user: " +session.Username;
+            mainui_login.Text = "Current user: " + session.Username;
         }
 
         private void mainui_login_Click(object sender, EventArgs e)
         {
-            this.Close();     
+            this.Close();
         }
 
         private void user_shopcart_Click(object sender, EventArgs e)
@@ -276,7 +266,7 @@ namespace MiracleLandNETFW
             int id = (int)DGV2.SelectedRows[0].Cells["id2"].Value;
             int productQuantityAvailable = FindProductQuantityInList(id);
             int quantityToAdd = AskForQuantity(productQuantityAvailable);
-            DGV2.SelectedRows[0].Cells["quantity2"].Value=quantityToAdd;
+            DGV2.SelectedRows[0].Cells["quantity2"].Value = quantityToAdd;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -299,8 +289,8 @@ namespace MiracleLandNETFW
         private void CartClear()
         {
             cart_id.Clear();
-            cart_name.Clear();  
-            cart_price.Clear(); 
+            cart_name.Clear();
+            cart_price.Clear();
             cart_quantity.Clear();
             cart_info.Clear();
             pictureBox2.ImageLocation = null;

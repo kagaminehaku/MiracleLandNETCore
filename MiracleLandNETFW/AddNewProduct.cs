@@ -1,14 +1,6 @@
 ﻿using BUS;
-using DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MiracleLandNETFW
@@ -53,7 +45,7 @@ namespace MiracleLandNETFW
 
         private void AddProductLogic()
         {
-            
+
             string imagePath = pictureBox1.ImageLocation;
             if (imagePath == null || imagePath.Length > 1024)
             {

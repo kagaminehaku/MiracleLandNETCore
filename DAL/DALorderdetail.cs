@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DTOCore;
+﻿using DTOCore;
 
 namespace DAL
 {
@@ -18,7 +13,7 @@ namespace DAL
                     var orders_detail = new OrderDetail
                     {
                         Orderid = orderid,
-                        Pid = pid, 
+                        Pid = pid,
                         Quantity = quantity
                     };
 
@@ -27,7 +22,7 @@ namespace DAL
                     return true;
                 }
             }
-            catch 
+            catch
             {
                 return false;
             }

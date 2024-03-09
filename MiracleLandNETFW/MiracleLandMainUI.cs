@@ -21,6 +21,7 @@ namespace MiracleLandNETFW
             else if (session != null)
             {
                 InitForSession();
+                LoadDataToDGV2();
             }
 
         }
@@ -33,6 +34,21 @@ namespace MiracleLandNETFW
             foreach (Product product in products)
             {
                 DGV1.Rows.Add(product.Pid, product.Pname, product.Pprice, product.Pquantity, product.Pinfo);
+            }
+        }
+
+        private void LoadDataToDGV2()
+        {
+            int cartid=1;
+            DGV2.Rows.Clear();
+            var busshopping_cart = new BUSshopping_cart();
+            List<ShoppingCart> items = busshopping_cart.GetAllItemInUserCart(session.Id);
+            foreach (ShoppingCart item in items)
+            {
+                var busproduct = new BUSproduct();
+                Product product = busproduct.GetProduct(item.Pid);
+                DGV1.Rows.Add(cartid, product.Pname, product.Pprice, item.Pquantity,product.Pinfo);
+                cartid++;
             }
         }
 
@@ -102,47 +118,20 @@ namespace MiracleLandNETFW
             }
             else if (session != null)
             {
+                int uid = session.Id;
                 int productId = int.Parse(user_pid.Text);
-                string productName = user_pname.Text;
-                int productPrice = int.Parse(user_pprice.Text);
                 int productQuantityAvailable = int.Parse(user_pquantity.Text);
-                string pinfo = user_pinfo.Text;
-
-                DataGridViewRow existingRow = FindProductInCart(productId);
-
-                if (existingRow == null)
+                if (true)
                 {
                     int quantityToAdd = AskForQuantity(productQuantityAvailable);
 
                     if (quantityToAdd > 0)
                     {
-                        DGV2.Rows.Add(productId, productName, productPrice, quantityToAdd, pinfo);
-                    }
-                }
-                else
-                {
-                    int currentQuantityInCart = Convert.ToInt32(existingRow.Cells["quantity2"].Value);
-                    int quantityToAdd = AskForQuantity(productQuantityAvailable);
-                    if (quantityToAdd > 0)
-                    {
-                        existingRow.Cells["quantity2"].Value = currentQuantityInCart + quantityToAdd;
+                        var buscart = new BUSshopping_cart();
+                        buscart.AddItemToCart(uid, productId, quantityToAdd);
                     }
                 }
             }
-        }
-
-        private DataGridViewRow FindProductInCart(int productId)
-        {
-            foreach (DataGridViewRow row in DGV2.Rows)
-            {
-                int cartProductId = Convert.ToInt32(row.Cells["id2"].Value);
-                if (cartProductId == productId)
-                {
-                    return row;
-                }
-            }
-
-            return null;
         }
 
         private int FindProductQuantityInList(int cartProductId)

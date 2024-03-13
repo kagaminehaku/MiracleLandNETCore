@@ -47,7 +47,8 @@ namespace MiracleLandNETFW
             {
                 var busproduct = new BUSproduct();
                 Product product = busproduct.GetProduct(item.Pid);
-                DGV2.Rows.Add(cartid, product.Pname, product.Pprice, item.Pquantity,product.Pinfo);
+                int cartprice = product.Pprice * item.Pquantity;
+                DGV2.Rows.Add(cartid, product.Pname, cartprice, item.Pquantity,product.Pinfo);
                 cartid++;
             }
         }
@@ -167,9 +168,9 @@ namespace MiracleLandNETFW
         private void DGV2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            int id = (int)DGV2.SelectedRows[0].Cells["id2"].Value;
+            string itemname = (string)DGV2.SelectedRows[0].Cells["name2"].Value;
             var busproduct = new BUSproduct();
-            var product = busproduct.GetProduct(id);
+            var product = busproduct.GetProductByName(itemname);
             cart_id.Text = product.Pid.ToString();
             cart_name.Text = product.Pname;
             cart_price.Text = product.Pprice.ToString();

@@ -47,7 +47,7 @@ namespace MiracleLandNETFW
             {
                 var busproduct = new BUSproduct();
                 Product product = busproduct.GetProduct(item.Pid);
-                DGV1.Rows.Add(cartid, product.Pname, product.Pprice, item.Pquantity,product.Pinfo);
+                DGV2.Rows.Add(cartid, product.Pname, product.Pprice, item.Pquantity,product.Pinfo);
                 cartid++;
             }
         }
@@ -132,6 +132,7 @@ namespace MiracleLandNETFW
                     }
                 }
             }
+            LoadDataToDGV2();
         }
 
         private int FindProductQuantityInList(int cartProductId)

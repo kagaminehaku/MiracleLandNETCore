@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>MiracleLandNETFW</RootNamespace>
     <AssemblyName>MiracleLandNETFW</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

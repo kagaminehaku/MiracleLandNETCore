@@ -93,9 +93,7 @@ public partial class TsmgContext : DbContext
 
             entity.ToTable("shopping_cart");
 
-            entity.Property(e => e.Cartitemid)
-                .ValueGeneratedNever()
-                .HasColumnName("cartitemid");
+            entity.Property(e => e.Cartitemid).HasColumnName("cartitemid");
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Pid).HasColumnName("pid");
             entity.Property(e => e.Pquantity).HasColumnName("pquantity");

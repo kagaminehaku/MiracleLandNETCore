@@ -80,6 +80,7 @@ namespace DAL
                         Pid = pid,
                         Pquantity = newqty
                     };
+                    Console.WriteLine(CartItem.Cartitemid);
                     Console.WriteLine(CartItem.Id);
                     Console.WriteLine(CartItem.Pid);
                     Console.WriteLine(CartItem.Pquantity);

@@ -33,13 +33,20 @@ namespace BUS
             if (qty > 0)
             {
                 var cart = new DALshopping_cart();
-                cart.UpdateItemQtyInCart(uid, pid, qty);
+                cart.UpdateAddItemQtyInCart(uid, pid, qty);
             }
-            else if (qty < 0)
+            else if (qty <= 0)
             {
                 DeleteCartItem(uid, pid);
             }
         }
+
+        public void EditItemQtyInCart(int uid, int pid, int newqty)
+        {
+            var cart = new DALshopping_cart();
+            cart.EditItemQtyInCart (uid, pid, newqty);
+        }
+
 
     }
 }

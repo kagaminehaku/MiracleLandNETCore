@@ -28,7 +28,7 @@ namespace DAL
             }
         }
 
-        public void UpdateItemQtyInCart(int uid, int pid ,int newqty)
+        public void UpdateAddItemQtyInCart(int uid, int pid ,int newqty)
         {
             try
             {
@@ -36,6 +36,23 @@ namespace DAL
                 {
                     var CartItem = dbContext.ShoppingCarts.FirstOrDefault(cart => cart.Id == uid && cart.Pid == pid);
                     CartItem.Pquantity = CartItem.Pquantity+newqty;
+                    dbContext.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void EditItemQtyInCart(int uid, int pid, int newqty)
+        {
+            try
+            {
+                using (var dbContext = new TsmgContext())
+                {
+                    var CartItem = dbContext.ShoppingCarts.FirstOrDefault(cart => cart.Id == uid && cart.Pid == pid);
+                    CartItem.Pquantity =newqty;
                     dbContext.SaveChanges();
                 }
             }
@@ -71,7 +88,7 @@ namespace DAL
                     var existingItem = GetExistCartItem(uid,pid);
                     if (existingItem != null)
                     {
-                        UpdateItemQtyInCart (uid, pid , newqty);
+                        UpdateAddItemQtyInCart (uid, pid , newqty);
                     }
 
                     var CartItem = new ShoppingCart

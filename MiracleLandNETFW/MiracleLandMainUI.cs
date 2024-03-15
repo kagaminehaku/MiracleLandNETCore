@@ -39,7 +39,7 @@ namespace MiracleLandNETFW
 
         private void LoadDataToDGV2()
         {
-            int cartid=1;
+            int cartid = 1;
             DGV2.Rows.Clear();
             var busshopping_cart = new BUSshopping_cart();
             List<ShoppingCart> items = busshopping_cart.GetAllItemInUserCart(session.Id);
@@ -48,7 +48,7 @@ namespace MiracleLandNETFW
                 var busproduct = new BUSproduct();
                 Product product = busproduct.GetProduct(item.Pid);
                 int cartprice = product.Pprice * item.Pquantity;
-                DGV2.Rows.Add(cartid, product.Pname, cartprice, item.Pquantity,product.Pinfo);
+                DGV2.Rows.Add(cartid, product.Pname, cartprice, item.Pquantity, product.Pinfo);
                 cartid++;
             }
         }
@@ -249,31 +249,36 @@ namespace MiracleLandNETFW
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cart_id.Text))
+            if (String.IsNullOrEmpty(cart_name.Text))
             {
                 MessageBox.Show("Please select a product.");
                 return;
             }
-            int id = (int)DGV2.SelectedRows[0].Cells["id2"].Value;
-            int productQuantityAvailable = FindProductQuantityInList(id);
-            int quantityToAdd = AskForQuantity(productQuantityAvailable);
-            DGV2.SelectedRows[0].Cells["quantity2"].Value = quantityToAdd;
+            var busproduct = new BUSproduct();
+            var product = busproduct.GetProductByName(cart_name.Text);
+            int newqty = AskForQuantity(product.Pquantity);
+            var cart = new BUSshopping_cart();
+            cart.EditItemQtyInCart(session.Id, product.Pid, newqty);
+            LoadDataToDGV2();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cart_id.Text))
+            if (String.IsNullOrEmpty(cart_name.Text))
             {
                 MessageBox.Show("Please select a product.");
                 return;
             }
-            int selectedIndex = DGV2.SelectedRows[0].Index;
             DialogResult result = MessageBox.Show("Are you sure you want to delete the selected product?", "Confirmation", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
-                DGV2.Rows.RemoveAt(selectedIndex);
+                var busproduct = new BUSproduct();
+                var product = busproduct.GetProductByName(cart_name.Text);
+                var cart = new BUSshopping_cart();
+                cart.DeleteCartItem(session.Id, product.Pid);
                 CartClear();
+                LoadDataToDGV2();
             }
         }
 

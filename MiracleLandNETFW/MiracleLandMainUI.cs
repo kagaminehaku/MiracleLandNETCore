@@ -39,6 +39,7 @@ namespace MiracleLandNETFW
 
         private void LoadDataToDGV2()
         {
+            CartClear();
             int cartid = 1;
             DGV2.Rows.Clear();
             var busshopping_cart = new BUSshopping_cart();
@@ -47,8 +48,7 @@ namespace MiracleLandNETFW
             {
                 var busproduct = new BUSproduct();
                 Product product = busproduct.GetProduct(item.Pid);
-                int cartprice = product.Pprice * item.Pquantity;
-                DGV2.Rows.Add(cartid, product.Pname, cartprice, item.Pquantity, product.Pinfo);
+                DGV2.Rows.Add(cartid, product.Pname, product.Pprice, item.Pquantity, product.Pinfo);
                 cartid++;
             }
         }
@@ -277,7 +277,6 @@ namespace MiracleLandNETFW
                 var product = busproduct.GetProductByName(cart_name.Text);
                 var cart = new BUSshopping_cart();
                 cart.DeleteCartItem(session.Id, product.Pid);
-                CartClear();
                 LoadDataToDGV2();
             }
         }
@@ -313,25 +312,29 @@ namespace MiracleLandNETFW
                 }
             }
             var busorders = new BUSorders();
-            string oid = busorders.AddNewOrders(session.Id, total);
+            int oid = busorders.AddNewOrders(session.Id, total);
             foreach (DataGridViewRow row in DGV2.Rows)
             {
-                if (int.TryParse(row.Cells["id2"].Value.ToString(), out int pid) &&
+                if (row.Cells["name2"].Value.ToString() != null &&
                         int.TryParse(row.Cells["quantity2"].Value.ToString(), out int quantity))
                 {
+                    string productname = row.Cells["name2"].Value.ToString();
                     var busproduct = new BUSproduct();
-                    busproduct.UpdateProductQuantity(pid, quantity);
+                    busproduct.UpdateProductQuantityByName(productname, quantity);
                     var busorderdetail = new BUSorderdetail();
-                    bool isok = busorderdetail.AddNewOrderDetail(int.Parse(oid), pid, quantity);
+                    var product = busproduct.GetProductByName(productname);
+                    bool isok = busorderdetail.AddNewOrderDetail(oid,product.Pid, quantity);
                     if (isok == false)
                     {
                         MessageBox.Show("Something wrong");
                     }
+                    var cart = new BUSshopping_cart();
+                    cart.DeleteCartItem(session.Id,product.Pid);
                 }
             }
             MessageBox.Show("Thank you for your order! Please pay " + total + "VND when your package arrives.");
-            CartClear();
             LoadDataToDGV();
+            LoadDataToDGV2();
         }
 
         private void DGV2_CellValueChanged(object sender, DataGridViewCellEventArgs e)

@@ -57,5 +57,13 @@ namespace BUS
             int quantity = product.Pquantity - minusquantity;
             dalproduct.UpdateProductQuantity(id, quantity);
         }
+
+        public void UpdateProductQuantityByName(string name, int minusquantity)
+        {
+            var dalproduct = new DALproduct();
+            var product = GetProductByName(name);
+            int quantity = product.Pquantity - minusquantity;
+            dalproduct.UpdateProductQuantityByName(name, quantity);
+        }
     }
 }
